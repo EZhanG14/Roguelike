@@ -2,7 +2,7 @@ package mondayDemo;
 
 
 
-public class map {
+public class Map {
 	static int mSizeX=8;
 	static int mSizeY=8;
 	static char[][] map = new char[mSizeY][mSizeX];
