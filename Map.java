@@ -3,26 +3,36 @@ package mondayDemo;
 
 
 public class Map {
-	static int mSizeX=8;
-	static int mSizeY=8;
-	static char[][] map = new char[mSizeY][mSizeX];
+	private static int mSizeX=8;
+	private static int mSizeY=8;
+	private char[][] map = new char[mSizeY][mSizeX];
 	
-	public static void main(String[] args) {
-			createMap();
-			printMap();
-		}
 	
-
 	
-	public static void createMap(){
+	public  void createBlankMap(char fill){
 		for(int i=0; i<mSizeY; i++) {
 			for(int j=0; j<mSizeX; j++) {
-				map[i][j]='#';
+				map[i][j]=fill;
+				
 			}
 		}
 	}
+	public void createMap(String layout) {
+		int posX = 0;
+		int posY=0;
+		for (int i = 0; i < layout.length(); i++){
+		
+			if (i % mSizeX==0 && i !=0) { // i!=0 because i only want the counter to iterate on multiples of mSizeX.  0%(mSizeX)=0 unintentionally satisfying the if condition
+				posY++;
+				posX=0;
+			}
+			
+			map[posX][posY] = layout.charAt(i);
+			posX++;
+		}
+	}
 	
-	public static void printMap() {
+	public void printMap() {
 		for(int i=0; i<mSizeY; i++) {
 			for(int j=0; j<mSizeX; j++){
 				System.out.print(map[i][j]);
@@ -33,6 +43,4 @@ public class Map {
 	}
 	
 }
-
-
 
