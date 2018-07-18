@@ -1,6 +1,6 @@
 package mondayDemo;
 //sorry for the bad documentation everyone!
-public class core {
+public class Core {
 	public static void main(String[] args) {
 	Map map1 = new Map();
 	
