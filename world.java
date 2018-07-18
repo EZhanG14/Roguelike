@@ -1,26 +1,38 @@
 package mondayDemo;
 
-import java.util.Arrays;
+
 
 public class world {
+	static int mSizeX=8;
+	static int mSizeY=8;
+	static char[][] map = new char[mSizeY][mSizeX];
+	
 	public static void main(String[] args) {
-		int mSizeX=8;
-		int mSizeY=8;
-		char[][] map;
-		map= new char[mSizeY][mSizeX];
-		
+			createMap();
+			printMap();
+		}
+	
+
+	
+	public static void createMap(){
 		for(int i=0; i<mSizeY; i++) {
 			for(int j=0; j<mSizeX; j++) {
 				map[i][j]='#';
 			}
 		}
+	}
+	
+	public static void printMap() {
 		for(int i=0; i<mSizeY; i++) {
 			for(int j=0; j<mSizeX; j++){
 				System.out.print(map[i][j]);
 				System.out.print(" ");
-				
 			}
-			System.out.println();
+		System.out.println();
 		}
 	}
+	
 }
+
+
+
