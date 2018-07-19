@@ -20,5 +20,6 @@ public class Inventory{
       }else{
         system.out.println("You do not have a sword.")
       }
-  }
+  }*/ 
+  public static void main(String[] args){}
 }
