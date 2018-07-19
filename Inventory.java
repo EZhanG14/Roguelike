@@ -5,6 +5,8 @@
   - preferably use "T" as a symbol to represent sword
   - use ~ to oepn up "inventory tab"
 */
+package mondayDemo;
+
 public class Inventory{
   private char sword = "T";
   private char inventButton = "~";
