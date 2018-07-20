@@ -3,12 +3,20 @@
  * 
  */
 
-public class player {
+public class player extends core {
   String name;
   int power;
   int health=5;
+  public player(int x,int y)
+  {
+	  super(x,y);
+  }
+ 
 
-   public void setname(String n)
+   
+
+
+public void setname(String n)
   {
 	this.name=n;
 	
