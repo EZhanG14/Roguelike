@@ -9,3 +9,8 @@
    and thank them for playing.
    - use any symbols for enemies that are not being used already
     - find a way to import the enemies into the map.
+    coordinated variables (inventory):
+    - sword: swordOne
+    coordinated variables (COre or map):
+    - 
+    */
