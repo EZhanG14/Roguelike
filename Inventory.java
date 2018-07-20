@@ -2,10 +2,11 @@
   - sword will change how much damage u do ( for enemies.java)
   - find a way to generate sword location on map
   - print text indicating that the plyer found a sword
-  - preferably use "T" as a symbol to represent sword
+  - preferably use "!" as a symbol to represent sword
   - use ~ to oepn up "inventory tab"
   - ARe we going to have more than 1 sword?
   - is the collision detection for sword on core, map or inventory?
+  - how to check if player has sword?
   Cooridinated variables (enemy):
    - sword = SwordOne.
 */
