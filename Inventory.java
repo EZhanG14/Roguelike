@@ -4,11 +4,15 @@
   - print text indicating that the plyer found a sword
   - preferably use "T" as a symbol to represent sword
   - use ~ to oepn up "inventory tab"
+  - ARe we going to have more than 1 sword?
+  - is the collision detection for sword on core, map or inventory?
+  Cooridinated variables (enemy):
+   - sword = SwordOne.
 */
 package mondayDemo;
 
 public class Inventory{
-  private char sword = "T";
+  private char swordOne = "!";
   private char inventButton = "~";
   /*if player movement = sword coordinates{
   system.out.println("You found a sword")
