@@ -42,5 +42,14 @@ public class Map {
 		}
 	}
 	
+	public char getPos(int xPos,int yPos) {
+		char tile;
+		tile=map[xPos][yPos];
+		return tile;
+		
+	}
+	public void setSpace(int xPos, int yPos, char tile){
+		map[xPos][yPos]= tile;
+	}
+	
 }
-
