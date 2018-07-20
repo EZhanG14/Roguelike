@@ -11,6 +11,9 @@
     - find a way to import the enemies into the map.
     coordinated variables (inventory):
     - sword: swordOne
+    - array to check if sword is in inventory: invSword[]
+    - returning true or fals if sword exists or not: sCheck, type: boolean
+    
     coordinated variables (COre or map):
     - 
     */
