@@ -15,11 +15,17 @@ package mondayDemo;
 public class Inventory{
   private char swordOne = "!";
   private char inventButton = "~";
+  
   /*if player movement = sword coordinates{
   system.out.println("You found a sword")
   }*/
-  
-  /*if player presses "~"{
+  public void SwordCheck{
+  char invSword[] = new inv[1]
+    boolean sCheck = false;
+    if invSword is empty{ sCheck = false}
+    else{ sCheck = true}
+  } 
+  /*if player presses "~"
       if player has sword{
         system.out.println("You have one sword.")
       }else{
