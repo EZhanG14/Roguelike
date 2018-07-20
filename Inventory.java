@@ -14,19 +14,19 @@
    
 */
 package mondayDemo;
+import java.util.Scanner;
 
-public class Inventory{
+public class Inventory extends Core{
   private char swordOne = "!";
   private char inventButton = "~";
   
-  /*if player movement = sword coordinates{
-  system.out.println("You found a sword")
-  }*/
-  public void SwordCheck{
+
+  public void SwordCheck(){
   char invSword[] = new char[1]
-    boolean sCheck = false;
-    if getSword is false{ sCheck = false}
-    else{ sCheck = true}
+    
+    if getSword = true{
+      invSword.add("!");
+    }
   } 
   /*if player presses "~"
       if player has sword{
