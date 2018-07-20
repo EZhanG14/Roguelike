@@ -9,12 +9,24 @@ public class core {
 	static Map map1 = new Map();
 	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {  
-	//player p1=new player();
-	//p1.power=1;
+	player p1=new player();
+	p1.power=1;
 	System.out.println("Player set your Name");
-	//String p1.Name=myScan.nextline();
-	//p1.setname(p1.Name);
+	String p1Name=sc.nextLine();
+	p1.setname(p1Name);
+/**	if (getInventory()==sword)
 	{
+		p1power=3;
+		
+	}
+	else
+	{ 
+		
+		p1power=1;
+	
+	}
+	p1.setpower(p1power);
+*/	{
 	
 	
 	String map = "########" +
