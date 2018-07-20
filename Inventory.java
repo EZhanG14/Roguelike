@@ -23,9 +23,9 @@ public class Inventory{
   system.out.println("You found a sword")
   }*/
   public void SwordCheck{
-  char invSword[] = new inv[1]
+  char invSword[] = new char[1]
     boolean sCheck = false;
-    if invSword is empty{ sCheck = false}
+    if getSword is false{ sCheck = false}
     else{ sCheck = true}
   } 
   /*if player presses "~"
