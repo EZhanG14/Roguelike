@@ -9,6 +9,9 @@
   - how to check if player has sword?
   Cooridinated variables (enemy):
    - sword = SwordOne.
+   Coordinate variables (Core):
+   - checking if user ran over vcertain coordinates. core will say a certain variable is true or false. = boolean getSword.
+   
 */
 package mondayDemo;
 
