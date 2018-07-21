@@ -18,6 +18,10 @@ public class Core {
 					    "#      #" +
 					    "########" ;
 	
+	private boolean gameLoop = true;
+	public void setGameLoop(boolean value){
+		this.gameLoop = value;
+	}
 	public static String input() {
 		String input;
 		System.out.println("Your location is " + player1.getX() +" "+ player1.getY());
@@ -38,7 +42,6 @@ public class Core {
 	
 	public static void main(String[] args) { 
 		map1.createMap(map);
-		boolean gameLoop = true;
 		while (gameLoop = true) { // game loop change later
 			String input=input();
 			
