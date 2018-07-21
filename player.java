@@ -1,3 +1,5 @@
+package mondayDemo;
+
 import java.util.Scanner;
 
 /**
@@ -67,7 +69,7 @@ public class player extends Movers  {
 
 
 
-  public static void main(String[] args) {
+  public static void monsterFight(){
       Scanner sc = new Scanner(System.in);
       //System.out.println("What do you want your name to be?: ");
    	  //pName = sc.next();
