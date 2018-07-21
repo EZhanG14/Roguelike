@@ -1,3 +1,6 @@
+package mondayDemo;
+//known bug: starting a player in a wall bugss everything out 
+
 import java.util.Scanner;
 
 //sorry for the bad documentation everyone!
@@ -44,6 +47,3 @@ public class core {
 		}
 	}
 }
-	
-	
-	
