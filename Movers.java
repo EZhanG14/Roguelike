@@ -1,11 +1,7 @@
-package mondayDemo;
-
-
 public class Movers {
 	private int posX;
 	private int posY;
-	
-	
+
 	public Movers() {
 		posX=1;
 		posY=1;
@@ -73,6 +69,7 @@ public class Movers {
 				posX++;
 			}
 			
+	
 		}
 	}
 }
