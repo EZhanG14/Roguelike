@@ -82,7 +82,7 @@ public class player extends Movers  {
 
       
    
-      while(playing==true){
+      while(playing =true){
 
 
           System.out.println("enemy has "+enemyHealth+" health remaining.");
@@ -185,7 +185,4 @@ public void setname(String n)
 
 
 }
-
-
-
 

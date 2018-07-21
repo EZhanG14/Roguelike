@@ -1,3 +1,6 @@
+package mondayDemo;
+
+
 public class Movers {
 	private int posX;
 	private int posY;

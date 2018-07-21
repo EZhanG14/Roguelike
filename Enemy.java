@@ -11,8 +11,10 @@ public class Enemy extends Movers{
 	private static int EnemyYcheck=EnemyposY-posY;
 	
 	public static void moveEnemy(){
+		
+		
 	if(EnemyXcheck>0&&EnemyYcheck>0)
-	{
+	{ 
 	    
 			core.map1.setSpace(EnemyposX-1,EnemyposY-1,'X');
 			core.map1.setSpace(EnemyposX,EnemyposY,' ');
@@ -20,15 +22,17 @@ public class Enemy extends Movers{
 			EnemyposY--;
 			
 	}else if (EnemyYcheck>0&&EnemyXcheck<=0) {
-		core.map1.setSpace(EnemyposX-1,EnemyposY,'X');
+		core.map1.setSpace(EnemyposX-1,EnemyposY+1,'X');
 		core.map1.setSpace(EnemyposX,EnemyposY,' ');
 		EnemyposY--;
+		EnemyposX++;
 		
 		}
-	else if (EnemyXcheck<=0&&EnemyXcheck>0) {
+	else if (EnemyYcheck<=0&&EnemyXcheck>0) {
 		core.map1.setSpace(EnemyposX,EnemyposY-1,'X');
 		core.map1.setSpace(EnemyposX,EnemyposY,' ');
-		EnemyposY--;
+		EnemyposY++;
+		EnemyposX--;
 		
 		}
 	else if (EnemyYcheck<0&&EnemyXcheck<0) {
@@ -41,7 +45,13 @@ public class Enemy extends Movers{
 	else {
 		core.map1.setSpace(EnemyposX,EnemyposY,'X');
 	}
-	
+	if(EnemyXcheck+EnemyYcheck==0||EnemyXcheck+EnemyYcheck==-1||EnemyXcheck+EnemyYcheck==-2||EnemyXcheck+EnemyYcheck==1||EnemyXcheck+EnemyYcheck==2)
+	{
+		core.map1.setSpace(posX,posY,'X');
+		core.map1.setSpace(EnemyposX,EnemyposY,' ');
+		EnemyposX=posX;
+		EnemyposY=posY;
+	}
 	
 	
 	
