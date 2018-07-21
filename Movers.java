@@ -45,14 +45,14 @@ public class Movers {
 		
 		Core.map1.setSpace(posX,posY,'O'); // this fixes the bug when character disappears when touching wall
 		
-		if(input.equals("w")){	 
+		if(input.equals("W")){	 
 			if (preCheck(posX,posY-1)==true) {
 				movePlayer(posX,posY-1);
 				posY--;
 			}
 		}
 		
-		if(input.equals("s")) {
+		if(input.equals("S")) {
 			if (preCheck(posX,posY+1)==true) {
 				movePlayer(posX,posY+1);
 				posY++;
@@ -60,14 +60,14 @@ public class Movers {
 			}
 			
 			
-		if(input.equals("a")){
+		if(input.equals("A")){
 		    if (preCheck(posX-1,posY)==true) {
 		    	movePlayer(posX-1,posY);
 		    	posX--;
 				}
 		    }
 			
-		if(input.equals("d")) {
+		if(input.equals("D")) {
 			if (preCheck(posX+1,posY)==true) {
 				movePlayer(posX+1,posY);
 				posX++;
