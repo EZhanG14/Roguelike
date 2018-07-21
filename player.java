@@ -20,7 +20,7 @@ public class player extends Movers  {
   private static int power=1;
   
   
-  private static boolean swordSheath;
+  private static  boolean swordSheath= false;
 
 	public boolean addInv(char x){
 		if(x == '!'){
@@ -34,8 +34,8 @@ public class player extends Movers  {
 
 
 
-	public static  void  checkInv(){
-		if(swordSheath = true){
+	public static void  checkInv(){
+		if(swordSheath == true){
 			System.out.println("You have a sword!");
 		}else { 
 		System.out.println("Your bag is empty");
@@ -70,7 +70,8 @@ public class player extends Movers  {
 
 
   public static void monsterFight(){
-      Scanner sc = new Scanner(System.in);
+      @SuppressWarnings("resource")
+	Scanner sc = new Scanner(System.in);
       //System.out.println("What do you want your name to be?: ");
    	  //pName = sc.next();
    
@@ -81,7 +82,7 @@ public class player extends Movers  {
 
       
    
-      while(playing =true){
+      while(playing==true){
 
 
           System.out.println("enemy has "+enemyHealth+" health remaining.");
@@ -184,6 +185,7 @@ public void setname(String n)
 
 
 }
+
 
 
 
