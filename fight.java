@@ -77,7 +77,7 @@ public class fight{
 	            if(action.equals("a") && enemymakeChoice == 1){
 	                checkHealth();
 	                System.out.println("oohh!  "+pName+" fight with enemy");
-	                playerHealth-=power;
+	                playerHealth-=1;
 	                enemyHealth-=power;
 	                checkHealth();
 
@@ -95,7 +95,7 @@ public class fight{
 	            }else if (action.equals("b") && enemymakeChoice == 1){
 	                
 	                System.out.println("Player run");
-	                playerHealth-=power;
+	                playerHealth-=1;
 	                checkHealth();
 	                swordChoice=Math.ceil(Math.random()*2 );
 	                if(swordChoice==2)
