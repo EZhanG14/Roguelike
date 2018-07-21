@@ -34,7 +34,7 @@ public class Core {
 		
 		
 	}
-	public boolean winCondition(boolean gameOver){
+	public boolean setGameOver(boolean gameOver){
 		System.out.println("You have finished the demo. Thanks for playing :) ~Group 4");
 		gameOver = false;
 		return gameOVer;
