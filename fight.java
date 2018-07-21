@@ -13,28 +13,17 @@ public class fight{
 	    private static boolean playing = false;
 	    private static int enemyHealth = 4;
 	    private static int playerHealth = 5;
-	    private static double enemyChoice = Math.ceil(Math.random() * 2);
+	    private static double enemymakeChoice=Math.ceil(Math.random()*2 );
+	    private static double swordChoice= Math.ceil(Math.random()*2 );
 	    private static String pName;
 	    private static int power=1;
-	    private static int sword=0;
+	    
         
-	    public int getpower()
-	    {
-	    	return power;
-	    }
-	    public  void  setpower()
-	    {
-	    	if (sword==0)
-	    	{
-	    		fight.power=1;
-	    	}
-	    	else if(sword==1)
-	    	{
-	    		fight.power=3;
-	    	}
-	    }
-
-
+	  
+	   
+	    		
+	    	     
+	    		
 	    public static void checkHealth(){
 	        if(enemyHealth <= 0){
 	            System.out.println(pName+" wins!");
@@ -65,7 +54,8 @@ public class fight{
 	            pName = sc.next();
 
 	            System.out.println("Hey folks!, we are going to have an exiting game today!");
-	            System.out.println(" Hint! If you have sword you can win game easy!!!!!");
+	            System.out.println(" Hint! If you have sword you can win game easy!!!!!"
+	            		+ "But you have to choose run");
 	           
 
 	            playing = true;
@@ -81,27 +71,40 @@ public class fight{
 	            System.out.println("What would you like to do? (a)fight  (b) run");
 	            action = sc.next();
 	        
-	            enemyChoice = Math.ceil(Math.random() * 2);
+	           
 	            checkHealth();
-
-	            if(action.equals("a") && enemyChoice == 1){
+	            enemymakeChoice=Math.ceil(Math.random()*2 );
+	            if(action.equals("a") && enemymakeChoice == 1){
 	                checkHealth();
 	                System.out.println("oohh!  "+pName+" fight with enemy");
 	                playerHealth-=power;
-	                enemyHealth-=1;
+	                enemyHealth-=power;
 	                checkHealth();
 
 	            
-	            }else if (action.equals("a") && enemyChoice == 2){
+	            }else if (action.equals("a") && enemymakeChoice == 2){
 	              
 	                System.out.println("enemy Run!!!");
+	                enemyHealth-=power;
+	                checkHealth();
+	           
+	         
+	                       
 	               
 	               
-	            }else if (action.equals("b") && enemyChoice == 1){
+	            }else if (action.equals("b") && enemymakeChoice == 1){
 	                
 	                System.out.println("Player run");
+	                playerHealth-=power;
+	                checkHealth();
+	                swordChoice=Math.ceil(Math.random()*2 );
+	                if(swordChoice==2)
+	                {
+	                	System.out.println("Get Sword");
+	                	power=3;
+	                }
 	             
-	            }else if (action.equals("b") && enemyChoice == 2){
+	            }else if (action.equals("b") && enemymakeChoice == 2){
 	                
 	                System.out.println("Player and Enemy both run");
 	              
@@ -116,6 +119,7 @@ public class fight{
 	    }
 
 	}
+	
 	
 	
 	
