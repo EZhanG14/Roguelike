@@ -33,7 +33,7 @@ public class Core {
 	public boolean winCondition(boolean gameOver){
 		System.out.println("You have finished the demo. Thanks for playing :) ~Group 4");
 		gameOver = false;
-		
+		return gameOVer;
 	}
 	
 	public static void main(String[] args) { 
