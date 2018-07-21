@@ -6,7 +6,7 @@ import java.util.Scanner;
 //sorry for the bad documentation everyone!
 public class core {
 	
-	static Movers player= new Movers();
+	static player player= new player(1,1);
 	static Map map1 = new Map();
 	static String map = "########" +
 					    "#      #" +
@@ -36,12 +36,16 @@ public class core {
 			if (input.equals("w")||input.equals("a")||
 				input.equals("s")||input.equals("d")){
 				player.move(input);
+		
 			}
 			map1.printMap();
 		}
+	}
+}
 	
-	}
-	}
+	
+	
+
 	
 	
 	
