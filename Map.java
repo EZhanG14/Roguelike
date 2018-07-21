@@ -27,7 +27,7 @@ public class Map {
 				posX=0;
 			}
 			
-			map[posX][posY] = layout.charAt(i);
+			map[posY][posX] = layout.charAt(i);
 			posX++;
 		}
 	}
@@ -44,12 +44,12 @@ public class Map {
 	
 	public char getPos(int xPos,int yPos) {
 		char tile;
-		tile=map[xPos][yPos];
+		tile=map[yPos][xPos];
 		return tile;
 		
 	}
 	public void setSpace(int xPos, int yPos, char tile){
-		map[xPos][yPos]= tile;
+		map[yPos][xPos]= tile;
 	}
 	
 }
