@@ -15,13 +15,11 @@ public class Core {
 					    "#  #   #" +
 					    "# x    #" +
 					    "#      #" +
-					    "#      #" +
+					    "#     $#" +
 					    "########" ;
 	
-	private boolean gameLoop = true;
-	public void setGameLoop(boolean value){
-		this.gameLoop = value;
-	}
+	private static boolean gameLoop = true;
+
 	public static String input() {
 		String input;
 		System.out.println("Your location is " + player1.getX() +" "+ player1.getY());
@@ -34,15 +32,15 @@ public class Core {
 		
 		
 	}
-	public boolean setGameOver(boolean gameOver){
+	public static void setGameLoop(boolean gameOver){
 		System.out.println("You have finished the demo. Thanks for playing :) ~Group 4");
-		gameOver = false;
-		return gameOVer;
+		gameLoop = false;
+		
 	}
 	
 	public static void main(String[] args) { 
 		map1.createMap(map);
-		while (gameLoop = true) { // game loop change later
+		while (gameLoop == true) { // game loop change later
 			String input=input();
 			
 			if(input.equals("~")) player1.checkInv();
@@ -50,11 +48,10 @@ public class Core {
 				input.equals("s")||input.equals("d")){
 				player1.move(input);
 			}
-			Enemy.moveEnemy();
+			//Enemy.moveEnemy();
 			map1.printMap();
 		}
 	}
 }
-	
 	
 	
