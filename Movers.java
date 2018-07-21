@@ -25,24 +25,24 @@ public class Movers {
 
 	public boolean preCheck(int checkX, int checkY) { // if false you cannot move there
 		boolean canMove=true;
-		if (core.map1.getPos(checkX,checkY)=='#') canMove=false; 
-		else if (core.map1.getPos(checkX,checkY)=='x') {
+		if (Core.map1.getPos(checkX,checkY)=='#') canMove=false; 
+		else if (Core.map1.getPos(checkX,checkY)=='x') {
 			canMove=true;
-			player.monsterFight();
+			Player.monsterFight();
 		}
 		return canMove;
 		
 	}
 	
 	private void movePlayer(int newX,int newY) {
-		core.map1.setSpace(newX,newY,'O');
-		core.map1.setSpace(posX,posY,' ');
+		Core.map1.setSpace(newX,newY,'O');
+		Core.map1.setSpace(posX,posY,' ');
 	}
 	
 
 	public void move(String input){
 		
-		core.map1.setSpace(posX,posY,'O'); // this fixes the bug when character disappears when touching wall
+		Core.map1.setSpace(posX,posY,'O'); // this fixes the bug when character disappears when touching wall
 		
 		if(input.equals("w")){	 
 			if (preCheck(posX,posY-1)==true) {
