@@ -15,7 +15,7 @@ public class Core {
 					    "#  #   #" +
 					    "# x    #" +
 					    "#      #" +
-					    "#     $#" +
+					    "#   ! $#" +
 					    "########" ;
 	
 	private static boolean gameLoop = true;
@@ -38,20 +38,19 @@ public class Core {
 		
 	}
 	
+	@SuppressWarnings("static-access") //FIX THIS
 	public static void main(String[] args) { 
 		map1.createMap(map);
 		while (gameLoop == true) { // game loop change later
 			String input = input().toUpperCase();
 			
 			if(input.equals("~")) player1.checkInv();
+			
 			if (input.equals("W")||input.equals("A")||
-				input.equals("S")||input.equals("D")){
-				player1.move(input);
-			}
-			//Enemy.moveEnemy();
+				input.equals("S")||input.equals("D")) player1.move(input);
+				
+			Enemy.moveEnemy();
 			map1.printMap();
 		}
 	}
 }
-	
-	
