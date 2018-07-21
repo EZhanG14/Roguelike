@@ -27,6 +27,10 @@ public class Movers {
 	public boolean preCheck(int checkX, int checkY) { // if false you cannot move there
 		boolean canMove=true;
 		if (core.map1.getPos(checkX,checkY)=='#') canMove=false; 
+		else if (core.map1.getPos(checkX,checkY)=='x') {
+			canMove=true;
+			player.monsterFight();
+		}
 		return canMove;
 		
 	}
@@ -68,6 +72,7 @@ public class Movers {
 				movePlayer(posX+1,posY);
 				posX++;
 			}
+			
 		}
 	}
 }
