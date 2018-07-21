@@ -30,13 +30,16 @@ public class Core {
 		
 		
 	}
-	public static void winCondition(){
-		System.out.println("You have finished the demo");
+	public static void winCondition(boolean gameOver){
+		System.out.println("You have finished the demo. Thanks for playing :) ~Group 4");
+		gameOver = false;
+		
 	}
 	
 	public static void main(String[] args) { 
 		map1.createMap(map);
-		while (true) { // game loop change later
+		boolean gameLoop = true;
+		while (gameLoop = true) { // game loop change later
 			String input=input();
 			
 			if(input.equals("~")) player1.checkInv();
