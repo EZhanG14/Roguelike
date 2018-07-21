@@ -41,11 +41,11 @@ public class Core {
 	public static void main(String[] args) { 
 		map1.createMap(map);
 		while (gameLoop == true) { // game loop change later
-			String input=input();
+			String input = input().toUpperCase();
 			
 			if(input.equals("~")) player1.checkInv();
-			if (input.equals("w")||input.equals("a")||
-				input.equals("s")||input.equals("d")){
+			if (input.equals("W")||input.equals("A")||
+				input.equals("S")||input.equals("D")){
 				player1.move(input);
 			}
 			//Enemy.moveEnemy();
