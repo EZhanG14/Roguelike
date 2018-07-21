@@ -61,10 +61,7 @@ public class player extends Movers  {
   }
 
 
- //public static monsterFight()
- {
-	 
- }
+
 
 
 
