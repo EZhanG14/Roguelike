@@ -26,13 +26,11 @@ public class Movers {
 	public boolean preCheck(int checkX, int checkY) { // if false you cannot move there
 		boolean canMove=true;
 		if (Core.map1.getPos(checkX,checkY)=='#') canMove=false; 
-		if (Core.map1.getPos(checkX,checkY)=='x') {
-			canMove=true;
-			Player.monsterFight();
-		}
-		if (Core.map1.getPos(checkX,checkY)=='!') {
-			Player.addInv('!');
-		}
+		if (Core.map1.getPos(checkX,checkY)=='x') Player.monsterFight();		
+		if (Core.map1.getPos(checkX,checkY)=='!') Player.addInv('!');
+		if (Core.map1.getPos(checkX,checkY)=='$') Core.setGameLoop(false);
+			
+		
 		return canMove;
 		
 	}
@@ -79,4 +77,3 @@ public class Movers {
 		}
 	}
 }
-
