@@ -21,7 +21,7 @@ public class Core {
 	public static String input() {
 		String input;
 		System.out.println("Your location is " + player1.getX() +" "+ player1.getY());
-		System.out.println("what do u want to do at this time?");
+		System.out.println("what do you want to do at this time?");
 		
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
@@ -29,6 +29,9 @@ public class Core {
 		return input;
 		
 		
+	}
+	public static void winCondition(){
+		System.out.println("You have finished the demo");
 	}
 	
 	public static void main(String[] args) { 
