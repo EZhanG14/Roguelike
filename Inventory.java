@@ -13,24 +13,24 @@
    - checking if user ran over vcertain coordinates. core will say a certain variable is true or false. = boolean getSword.
    
 */
-package mondayDemo;
+package bruh;
 import java.util.Scanner;
 
 public class Inventory extends Core{
-  private char swordOne = "!";
-  private char inventButton = "~";
+  private char swordOne = '!';
+  private char inventButton = '~';
   private char invSword[] = new char[1];
   
-  public char[] SwordCheck(){
-    if getSword = true{
-      invSword.add("!");
+  public char[] SwordCheck(boolean getSword){
+    if(getSword = true){
+      invSword[0] = '!';
     }
-    return invSword[];
+    return invSword;
   } //How would i be able to change the array value with swordCheck so I could move it to swordBattle??
 
   public boolean swordBattle(){
     boolean swordBattle;
-    if invSword[0] == "!"{
+    if(invSword[0] == '!'){
       swordBattle = true;
     }else{
       swordBattle = false;
