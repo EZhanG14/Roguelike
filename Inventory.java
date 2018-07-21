@@ -19,15 +19,26 @@ import java.util.Scanner;
 public class Inventory extends Core{
   private char swordOne = "!";
   private char inventButton = "~";
+  private char invSword[] = new char[1];
   
-
-  public void SwordCheck(){
-  char invSword[] = new char[1]
-    
+  public char[] SwordCheck(){
     if getSword = true{
       invSword.add("!");
     }
-  } 
+    return invSword[];
+  } //How would i be able to change the array value with swordCheck so I could move it to swordBattle??
+
+  public boolean swordBattle(){
+    boolean swordBattle;
+    if invSword[0] == "!"{
+      swordBattle = true;
+    }else{
+      swordBattle = false;
+    }
+    return swordBattle;
+  }
+
+// I think this should go into whatever class deals with taking thesuers input for moving. 
   /*if player presses "~"
       if player has sword{
         system.out.println("You have one sword.")
