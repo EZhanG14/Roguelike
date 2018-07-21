@@ -22,14 +22,14 @@ public class Enemy extends Movers{
 			EnemyposY--;
 			
 	}else if (EnemyYcheck>0&&EnemyXcheck<=0) {
-		core.map1.setSpace(EnemyposX-1,EnemyposY+1,'X');
+		core.map1.setSpace(EnemyposX+1,EnemyposY-1,'X');
 		core.map1.setSpace(EnemyposX,EnemyposY,' ');
 		EnemyposY--;
 		EnemyposX++;
 		
 		}
 	else if (EnemyYcheck<=0&&EnemyXcheck>0) {
-		core.map1.setSpace(EnemyposX,EnemyposY-1,'X');
+		core.map1.setSpace(EnemyposX-1,EnemyposY+1,'X');
 		core.map1.setSpace(EnemyposX,EnemyposY,' ');
 		EnemyposY++;
 		EnemyposX--;
