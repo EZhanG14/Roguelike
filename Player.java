@@ -3,7 +3,9 @@ package mondayDemo;
 import java.util.Scanner;
 
 /**
- * zhaoning meng
+ * This Class implement Player that you can play the game
+ * This Class also include inventory function
+ * @ author Zhaoning Meng, Eric Zhang;
  * 
  */
 
@@ -15,14 +17,19 @@ public class Player extends Movers  {
   private static int enemyHealth = 4;
   private static int playerHealth = 5;
   private static double enemymakeChoice=Math.ceil(Math.random()*2 );
-  
   private static String pName;
   private static int power=1;
+  private static boolean swordSheath;
+  // This Construct Player with specific (X,Y ) location
+  public Player(int x,int y)
+  {
+	  super(x,y);
+  }
+ 
   
-  
-  private static  boolean swordSheath= false;
-
-	public boolean addInv(char x){
+ 
+// This is a Inventory method to add sword
+	public static boolean addInv(char x){
 		if(x == '!'){
 		swordSheath = true;
 		return swordSheath;
@@ -33,11 +40,12 @@ public class Player extends Movers  {
 	}
 
 
-
-	public static void  checkInv(){
-		if(swordSheath == true){
+// This is the method to check the sword
+	public static  void  checkInv(){
+		if(swordSheath = true){
 			System.out.println("You have a sword!");
-		}else { 
+		}else if(swordSheath=false){
+			
 		System.out.println("Your bag is empty");
 		}
 	}
@@ -49,7 +57,7 @@ public class Player extends Movers  {
  
   		
   	     
-  		
+ //This is the method to check health 		
   public static void checkHealth(){
       if(enemyHealth <= 0){
           System.out.println(pName+" wins!");
@@ -57,18 +65,21 @@ public class Player extends Movers  {
       }else if(playerHealth <= 0){
           System.out.println(pName+" has fallen! Enemy wins!");
           playing = false;
+
       }
   }
 
 
+ public static void monsterFight()
+ {
+	 
+ 
 
 
 
 
-
-  public static void monsterFight(){
-      @SuppressWarnings("resource")
-	Scanner sc = new Scanner(System.in);
+ 
+      Scanner sc = new Scanner(System.in);
       //System.out.println("What do you want your name to be?: ");
    	  //pName = sc.next();
    
@@ -78,7 +89,7 @@ public class Player extends Movers  {
 
 
       
-   
+   //This loop decide when to end the game
       while(playing =true){
 
 
@@ -111,7 +122,7 @@ public class Player extends Movers  {
               checkHealth();
 
           
-          }else if (action.equals("YES") && enemymakeChoice == 2){
+          }else if (action.equals("YES")||action.equals("yes") && enemymakeChoice == 2){
             
               System.out.println("The monster ran away!");
                          
@@ -129,49 +140,24 @@ public class Player extends Movers  {
          
           }
 
-
+      }
 
       }
 
-  }
-  public Player(int x,int y)
-  {
-	  super(x,y);
-  }
+  
+ 
+  
+  
  
 
    
 
 
-public void setname(String n)
-  {
-	this.name=n;
-	
-   }
 
-  public String getname()
- {
-	return name;
 
-  }
-  public void setpower(int p)
-  {
-	power=p;
-	
-   }
-   public int getpower()
-   {
-	return power;
-   }
-    public void sethealth(int h)
-   {
-	this.health=h;
-    }
 
-   public int gethealth()
-    {
-	return health;
-    }
+
+
 
 
 
@@ -182,4 +168,11 @@ public void setname(String n)
 
 
 }
+
+
+
+
+
+
+
 
