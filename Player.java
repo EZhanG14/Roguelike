@@ -14,13 +14,19 @@ public class Player extends Movers  {
   int x,y;
   int health=5;
   @SuppressWarnings("unused")
-private static boolean playing = false;
+  private static boolean playing = false;
   private static int enemyHealth = 4;
   private static int playerHealth = 5;
   private static double enemymakeChoice=Math.ceil(Math.random()*2 );
   private static int power=1;
-  private static boolean swordSheath;
-  // This is a Construct Player with specific (X,Y ) location
+  private static boolean swordSheath=false;
+
+  /**
+   *  This is a Construct Player with specific (X,Y ) location
+   * @param x
+   * @param y
+  
+   */
   public Player(int x,int y)
   {
 	  super(x,y);
@@ -28,30 +34,42 @@ private static boolean playing = false;
  
   
  
-// This is a Inventory method to add sword
-	public static boolean addInv(char x){
-		if(x == '!'){
-		swordSheath = true;
-		return swordSheath;
-		}else
-		{swordSheath=false;
-		 return swordSheath;
+/**
+ *  This is a Inventory method to add sword
+ * @param x
+ */
+	public    static void  addInv(char x){
+		if(x == '!')
+		{
+		swordSheath=true;
 		}
+		else if (x!='!')
+		{
+		 swordSheath=false;
+		}
+		
 	}
 
 
-// This is the method to check the sword 
-	public static  void  checkInv(){
+/**
+ * 
+ * This is the method to check the sword 
+ */
+	public static  void checkInv(){
 		if(swordSheath = true){
-			System.out.println("You have a sword!");
-		}else if(swordSheath=false){
-			
-		System.out.println("Your bag is empty");
+		System.out.println("You have a Sword");	
+		
+		}else if (swordSheath=false){
+			System.out.println("Your Bag is empty");
 		}
+		  
+		
 	}
 	  		
   	     
- //This is the method to check health if enemy's health is lower than 0,player win.		
+ /**
+  * This is the method to check health if enemy's health is lower than 0,player win.		
+  */
   public static void checkHealth(){
       if(enemyHealth <= 0){
           System.out.println("Player wins!");
@@ -63,7 +81,9 @@ private static boolean playing = false;
       }
   }
 
-//This is the method to build fight system
+/**
+ * This is the method to build fight system
+ */
  public static void monsterFight()
  {
    
@@ -73,7 +93,9 @@ private static boolean playing = false;
 
 
       
-   //This loop decide when to end the fight
+   /**
+    * This loop decide when to end the fight
+    */
       while(playing =true){
 
 
@@ -111,8 +133,9 @@ private static boolean playing = false;
           }else if (action.equals("YES") && enemymakeChoice == 2){
             
               System.out.println("The monster ran away!");
-     // It will break the loop either player or enemy choose run                      
-              break;
+  /**
+   *  It will break the loop either player or enemy choose run                     
+   */      break;
           }else if (action.equals("NO") && enemymakeChoice == 1){
               
               System.out.println("You ran away...");
@@ -131,6 +154,12 @@ private static boolean playing = false;
       }
 
 }
+
+
+
+
+
+
 
 
 
