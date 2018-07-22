@@ -19,7 +19,7 @@ public class Player extends Movers  {
   private static int playerHealth = 5;
   private static double enemymakeChoice=Math.ceil(Math.random()*2 );
   private static int power=1;
-  private static boolean swordSheath=false;
+  private static int swordSheath=0;
 
   /**
    *  This is a Construct Player with specific (X,Y ) location
@@ -36,17 +36,19 @@ public class Player extends Movers  {
  
 /**
  *  This is a Inventory method to add sword
- * @param x
+ * @return 
  */
-	public    static void  addInv(char x){
-		if(x == '!')
+	public  static  void addInv(char x){
+		if(x =='!')
 		{
-		swordSheath=true;
+		swordSheath=1;
+		
 		}
 		else if (x!='!')
 		{
-		 swordSheath=false;
+		 swordSheath=0;
 		}
+		
 		
 	}
 
@@ -55,11 +57,11 @@ public class Player extends Movers  {
  * 
  * This is the method to check the sword 
  */
-	public static  void checkInv(){
-		if(swordSheath = true){
+	public static void checkInv(){
+		if(swordSheath ==1){
 		System.out.println("You have a Sword");	
 		
-		}else if (swordSheath=false){
+		}else if (swordSheath==0){
 			System.out.println("Your Bag is empty");
 		}
 		  
@@ -113,10 +115,10 @@ public class Player extends Movers  {
           if(action.equals("YES") && enemymakeChoice == 1){
               checkHealth();
               
-              checkInv();
               
+              checkInv();
               System.out.println("You attacked the monster!");
-              if(swordSheath==true)
+              if(swordSheath==1)
               {
             	  power=3;
               }
@@ -125,7 +127,7 @@ public class Player extends Movers  {
             	  power=1;
               }
               
-              playerHealth-=1;
+              playerHealth-=2;
               enemyHealth-=power;
               checkHealth();
 
@@ -154,15 +156,6 @@ public class Player extends Movers  {
       }
 
 }
-
-
-
-
-
-
-
-
-
 
 
 
