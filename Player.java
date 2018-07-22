@@ -111,7 +111,7 @@ private static boolean playing = false;
           }else if (action.equals("YES") && enemymakeChoice == 2){
             
               System.out.println("The monster ran away!");
-                         
+     // It will break the loop either player or enemy choose run                      
               break;
           }else if (action.equals("NO") && enemymakeChoice == 1){
               
