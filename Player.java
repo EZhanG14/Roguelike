@@ -36,7 +36,7 @@ public class Player extends Movers  {
  
 /**
  *  This is a Inventory method to add sword
- * @return 
+ * 
  */
 	public  static  void addInv(char x){
 		if(x =='!')
