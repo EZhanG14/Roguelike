@@ -3,13 +3,12 @@ package mondayDemo;
 import mondayDemo.Core;
 
 public class Enemy extends Movers{
-		private static int posX ;
-		private static int posY;
-		private static boolean Enemy;
+		
+		
 		private static int EnemyposX=4;
 		private static int EnemyposY=4;
 		private static int randomvalue;
-
+// int the location of enemy and randomvalue
 	
 		
 		public static void moveEnemy(){
@@ -39,7 +38,7 @@ public class Enemy extends Movers{
 			else {
 				Core.map1.setSpace(EnemyposX,EnemyposY,'x');
 				
-			}
+			}//use the randomvalue to randomly choose the action of enemy
 		
 		
 		
@@ -49,10 +48,8 @@ public class Enemy extends Movers{
 		
 		
 		
-		if((posX==EnemyposX&&posY==EnemyposY)==true) {
-			Enemy=true;
-		}
   
 	}
 		}
 	
+
