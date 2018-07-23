@@ -108,7 +108,7 @@ public class Player extends Movers  {
           System.out.println("Do you want to attack? YES or NO ");   
           @SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-          	String	action = sc.next();
+          	String	action = sc.next().toUpperCase();
 
    
           enemymakeChoice=Math.ceil(Math.random()*2 );
