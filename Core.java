@@ -1,10 +1,16 @@
 package mondayDemo;
-//known bug: starting a player in a wall bugss everything out 
+//known bug: starting a player in a wall bugs everything out 
 
 import java.util.Scanner;
 
-//sorry for the bad documentation everyone!
+/**
+ * Core runs the game using methods from the other classes in the same package.
+ */
 public class Core {
+	/**
+	 *Creates an new enemy object.
+	 */
+	
 	Enemy monster =new Enemy();
 	
 	static Player player1= new Player(1,1);
