@@ -3,7 +3,9 @@ package mondayDemo;
 import java.util.Scanner;
 
 /**
- * zhaoning meng
+ * This Class implement Player and Fight System
+ * This Class also include inventory function
+ * @ author Zhaoning Meng, Eric Zhang;
  * 
  */
 
@@ -11,66 +13,81 @@ public class Player extends Movers  {
   String name;
   int x,y;
   int health=5;
-  private static boolean playing;
+  @SuppressWarnings("unused")
+  private static boolean playing = false;
   private static int enemyHealth = 4;
   private static int playerHealth = 5;
   private static double enemymakeChoice=Math.ceil(Math.random()*2 );
-  
-  private static String pName;
   private static int power=1;
+  private static int swordSheath=0;
+
+  /**
+   *  This is a Construct Player with specific (X,Y ) location
+   * @param x
+   * @param y
   
-  
-  private static  boolean swordSheath= false;
-
-	public static boolean addInv(char x){
-		if(x == '!'){
-		swordSheath = true;
-		return swordSheath;
-		}else
-		{swordSheath=false;
-		 return swordSheath;
-		}
-	}
-
-
-
-	public static void  checkInv(){
-		if(swordSheath == true){
-			System.out.println("You have a sword!");
-		}else { 
-		System.out.println("Your bag is empty");
-		}
-	}
-	
-
-
-
-
+   */
+  public Player(int x,int y)
+  {
+	  super(x,y);
+  }
  
-  		
+  
+ 
+/**
+ *  This is a Inventory method to add sword
+ * 
+ */
+	public  static  void addInv(char x){
+		if(x =='!')
+		{
+		swordSheath=1;
+		
+		}
+		else if (x!='!')
+		{
+		 swordSheath=0;
+		}
+		
+		
+	}
+
+
+/**
+ * 
+ * This is the method to check the sword 
+ */
+	public static void checkInv(){
+		if(swordSheath ==1){
+		System.out.println("You have a Sword");	
+		
+		}else if (swordSheath==0){
+			System.out.println("Your Bag is empty");
+		}
+		  
+		
+	}
+	  		
   	     
-  		
+ /**
+  * This is the method to check health if enemy's health is lower than 0,player win.		
+  */
   public static void checkHealth(){
       if(enemyHealth <= 0){
-          System.out.println(pName+" wins!");
+          System.out.println("Player wins!");
           playing = false;
       }else if(playerHealth <= 0){
-          System.out.println(pName+" has fallen! Enemy wins!");
+          System.out.println("Player has fallen! Enemy wins!");
           playing = false;
+
       }
   }
 
-
-
-
-
-
-
-  public static void monsterFight(){
-      @SuppressWarnings("resource")
-	Scanner sc = new Scanner(System.in);
-      //System.out.println("What do you want your name to be?: ");
-   	  //pName = sc.next();
+/**
+ * This is the method to build fight system
+ */
+ public static void monsterFight()
+ {
    
       System.out.println("You ran into a monster");
       System.out.println(" Hint! If you have sword you can do more damage!");
@@ -78,7 +95,9 @@ public class Player extends Movers  {
 
 
       
-   
+   /**
+    * This loop decide when to end the fight
+    */
       while(playing =true){
 
 
@@ -86,18 +105,20 @@ public class Player extends Movers  {
           System.out.println("You have "+playerHealth+" health remaining.");
 
           
-          System.out.println("Do you want to attack? YES or NO ");     
-          	String	action = sc.next();
+          System.out.println("Do you want to attack? YES or NO ");   
+          @SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+          	String	action = sc.next().toUpperCase();
 
    
           enemymakeChoice=Math.ceil(Math.random()*2 );
           if(action.equals("YES") && enemymakeChoice == 1){
               checkHealth();
               
-              checkInv();
               
+              checkInv();
               System.out.println("You attacked the monster!");
-              if(swordSheath==true)
+              if(swordSheath==1)
               {
             	  power=3;
               }
@@ -106,7 +127,7 @@ public class Player extends Movers  {
             	  power=1;
               }
               
-              playerHealth-=1;
+              playerHealth-=2;
               enemyHealth-=power;
               checkHealth();
 
@@ -114,8 +135,9 @@ public class Player extends Movers  {
           }else if (action.equals("YES") && enemymakeChoice == 2){
             
               System.out.println("The monster ran away!");
-                         
-              break;
+  /**
+   *  It will break the loop either player or enemy choose run                     
+   */      break;
           }else if (action.equals("NO") && enemymakeChoice == 1){
               
               System.out.println("You ran away...");
@@ -129,57 +151,8 @@ public class Player extends Movers  {
          
           }
 
-
+      }
 
       }
 
-  }
-  public Player(int x,int y)
-  {
-	  super(x,y);
-  }
- 
-
-   
-
-
-public void setname(String n)
-  {
-	this.name=n;
-	
-   }
-
-  public String getname()
- {
-	return name;
-
-  }
-  public void setpower(int p)
-  {
-	power=p;
-	
-   }
-   public int getpower()
-   {
-	return power;
-   }
-    public void sethealth(int h)
-   {
-	this.health=h;
-    }
-
-   public int gethealth()
-    {
-	return health;
-    }
-
-
-
-
-
-
-
-
-
 }
-
