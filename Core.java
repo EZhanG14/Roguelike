@@ -40,7 +40,7 @@ public class Core {
 	private static boolean gameLoop = true;
 	/**
 	 * Takes the user's input if they want to move or check thier inventory.
-	 * @returns the string that the user types in.
+	 * @return the string that the user types in.
 	 */
 	public static String input() {
 		String input;
