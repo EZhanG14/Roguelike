@@ -25,8 +25,8 @@ public class fightGraphics extends Application {
 /**
  * PLayer and enemies health. Set as needed.
  */
-private int pHealth = 9;
-private int eHealth = 3;
+private int pHealth = 10;
+private int eHealth = 9;
     
     @Override
     public void start(Stage stage) {
@@ -45,8 +45,9 @@ private int eHealth = 3;
     	 * Sprites, add the desired png images in eclipse.
     	 */
     	
-      Image playerSprite = new Image("file:wall2.png");
+      Image playerSprite = new Image("file:SPRITE.png");
       Image enemySprite = new Image("file:DrPepperRound.png");
+      Image playerRight = new Image("file:linkRight.png");
       /**
        * "iv" is for player
        * "vi" is for enemy
@@ -71,15 +72,16 @@ private int eHealth = 3;
       * Takes User's key inputs. change KeyCode.RIGHT to KEyCode.D and etc to change from arrow keys to WASD.
       */
     scene.setOnKeyPressed(e ->{
+        if(pHealth > 0) {
         	
-        	if(e.getCode()==KeyCode.RIGHT) {
-        		
+        	if(e.getCode()==KeyCode.D) {
+        		iv.setImage(playerRight);
         		//Change the number at the end to change how much player moves by.
     			iv.setLayoutX(iv.getLayoutX()+50);
     			iv.setImage(playerSprite);
     			
-    			//Collision detection.
-    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())){
+    			//Collision detection. Will only damage player if intersects & enemy isn't dead.
+    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent()) && eHealth > 0){
     				
     				//Damage, change as desired.
     				eHealth -= 1;
@@ -89,65 +91,65 @@ private int eHealth = 3;
     				
     				//"Deaths of the sprites"
     				if(pCheck == true) {
-    					iv.setImage(null);
+    					layout.getChildren().remove(iv);
     					System.out.println("You died!");
     				}
     				if(eCheck == true) {
-    					vi.setImage(null);
+    					layout.getChildren().remove(vi);
     				}
     				
     			}
-    		}else if(e.getCode()==KeyCode.LEFT){
+    		}else if(e.getCode()==KeyCode.A){
     			iv.setLayoutX(iv.getLayoutX()-50);
-    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())){
+    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())&& eHealth > 0){
     				eHealth -= 1;
     				pHealth -= 1;
     				boolean eCheck = enemyHealth(eHealth);
                     boolean pCheck = playerHealth(pHealth);
     				
     				if(pCheck == true) {
-    					iv.setImage(null);
+    					layout.getChildren().remove(iv);
     					System.out.println("You died!");
     				}
     				if(eCheck == true) {
-    					vi.setImage(null);
+    					//vi.setImage(null);
+    					layout.getChildren().remove(vi);
     				}
     			}
-    		}else if(e.getCode()==KeyCode.DOWN) {
+    		}else if(e.getCode()==KeyCode.S) {
     			iv.setLayoutY(iv.getLayoutY()+50);
-    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())){
+    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())&& eHealth > 0){
     				eHealth -= 1;
     				pHealth -= 1;
     				boolean eCheck = enemyHealth(eHealth);
     				boolean pCheck = playerHealth(pHealth);
     				
     				if(pCheck == true) {
-    					iv.setImage(null);
+    					layout.getChildren().remove(iv);
     					System.out.println("You died!");
     				}
     				if(eCheck == true) {
-    					vi.setImage(null);
-    					System.out.println();
+    					layout.getChildren().remove(vi);
     				}
     			}
-    		}else if(e.getCode()==KeyCode.UP) {
+    		}else if(e.getCode()==KeyCode.W) {
     			iv.setLayoutY(iv.getLayoutY()-50);
-    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())){
+    			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())&& eHealth > 0){
     				eHealth -= 1;
     				pHealth -= 1;
     				boolean eCheck = enemyHealth(eHealth);
     				boolean pCheck = playerHealth(pHealth);
     				
     				if(pCheck == true) {
-    					iv.setImage(null);
+    					layout.getChildren().remove(iv);
     					System.out.println("You died!");
     				}
     				if(eCheck == true) {
-    					vi.setImage(null);
+    					layout.getChildren().remove(vi);    					vi.setImage(null);
     				}
     			}
     		}
-
+        }
     	});
 
    
