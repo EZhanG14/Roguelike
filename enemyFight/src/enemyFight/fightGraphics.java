@@ -45,9 +45,12 @@ private int eHealth = 9;
     	 * Sprites, add the desired png images in eclipse.
     	 */
     	
-      Image playerSprite = new Image("file:SPRITE.png");
-      Image enemySprite = new Image("file:DrPepperRound.png");
+      Image playerSprite = new Image("file:linkDown.png");
+      Image enemySprite = new Image("file:Ganon.png");
       Image playerRight = new Image("file:linkRight.png");
+      Image playerLeft = new Image("file:linkLeft.png");
+      Image playerDown = new Image("file:linkDown.png");
+      Image playerUp = new Image("file:linkUp.png");
       /**
        * "iv" is for player
        * "vi" is for enemy
@@ -78,8 +81,8 @@ private int eHealth = 9;
         		iv.setImage(playerRight);
         		//Change the number at the end to change how much player moves by.
     			iv.setLayoutX(iv.getLayoutX()+50);
-    			iv.setImage(playerSprite);
-    			
+    			//iv.setImage(playerRight);
+
     			//Collision detection. Will only damage player if intersects & enemy isn't dead.
     			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent()) && eHealth > 0){
     				
@@ -100,6 +103,7 @@ private int eHealth = 9;
     				
     			}
     		}else if(e.getCode()==KeyCode.A){
+    			iv.setImage(playerLeft);
     			iv.setLayoutX(iv.getLayoutX()-50);
     			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())&& eHealth > 0){
     				eHealth -= 1;
@@ -117,6 +121,7 @@ private int eHealth = 9;
     				}
     			}
     		}else if(e.getCode()==KeyCode.S) {
+    			iv.setImage(playerDown);
     			iv.setLayoutY(iv.getLayoutY()+50);
     			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())&& eHealth > 0){
     				eHealth -= 1;
@@ -133,6 +138,7 @@ private int eHealth = 9;
     				}
     			}
     		}else if(e.getCode()==KeyCode.W) {
+    			iv.setImage(playerUp);
     			iv.setLayoutY(iv.getLayoutY()-50);
     			if(iv.getBoundsInParent().intersects(vi.getBoundsInParent())&& eHealth > 0){
     				eHealth -= 1;
