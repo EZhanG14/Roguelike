@@ -14,8 +14,21 @@ import javafx.scene.image.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
-//HAven't found a way to check the boundaries of the window. ~Eric.Z
-
+/**Haven't found a way to check the boundaries of the window. ~Eric.Z
+ * Features that are in here:
+ * - Movement with WASD
+ * - Sprites changing direction when you move
+ * - Proper Collision Detecting ( Wont kill you after enemy dies)
+ * - Game freezes/ends when you die.(Dosen't let you keep moving the invisible sprite)
+ * If you want to make the enemy move, 
+ * perhaps use Yuxiaos enemy movement code from the text only version 
+ * and implement that
+ * or find some way to make it move normally.
+ *
+ * @author Eric Zhang
+ *
+ */
+ 
 
 public class fightGraphics extends Application {
     public static void main(String[] args) {
@@ -54,6 +67,7 @@ private int eHealth = 9;
       /**
        * "iv" is for player
        * "vi" is for enemy
+       * Feel free to rename this.
        */
       ImageView iv = new ImageView();
       ImageView vi = new ImageView();
