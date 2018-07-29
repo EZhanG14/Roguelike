@@ -75,7 +75,7 @@ private int moveRes=10;
     				   "#          #"+
     				   "#          #"+
     				   "#          #"+
-    				   "#          #"+
+    				   "#    !     #"+
     				   "############");
     	player.setImage(playerSprite);
     	enemy.setImage(enemySprite);
@@ -203,5 +203,4 @@ private int moveRes=10;
 		
 }
 }
-    
    
