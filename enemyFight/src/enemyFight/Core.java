@@ -206,7 +206,7 @@ double deltaY=0;
     			   }
 		
 		
-    		});
+    		}});
     	
     	 AnimationTimer animator = new AnimationTimer()
     	    {
