@@ -1,6 +1,7 @@
 package enemyFight;
 
 import javafx.scene.layout.*;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
@@ -36,6 +37,7 @@ public class Core extends Application {
  */
 private int pHealth = 10;
 private int eHealth = 9;
+ImageView damageView = new ImageView();
 ImageView player = new ImageView();
 ImageView enemy = new ImageView();
 Image playerSprite = new Image("file:linkDown.png");
@@ -44,6 +46,7 @@ Image playerRight = new Image("file:linkRight.png");
 Image playerLeft = new Image("file:linkLeft.png");
 Image playerDown = new Image("file:linkDown.png");
 Image playerUp = new Image("file:linkUp.png");
+Image damage=new Image ("file:damage.png");
  static Image brick = new Image("file:wall3.png");
  
 Image sword = new Image("file:sword.jpg");
@@ -55,10 +58,13 @@ Pane layout = new Pane();
 Group hostileG = new Group();
 Map map1=new Map();
 
-private int moveRes=10;
+boolean attack=false;
+private int moveRes=2;
+double deltaX=0;
+double deltaY=0;
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws InterruptedException {
 
     	stage.setTitle("Demo 2 player Fight");
     	Scene scene = new Scene(layout, 800, 800);
@@ -67,27 +73,29 @@ private int moveRes=10;
     	
     	map1.createMap("############"+
     				   "#          #"+
+    				   "########## #"+
+    				   "#     #    #"+
+    				   "# # ! #    #"+
+    				   "# #####    #"+
     				   "#          #"+
     				   "#          #"+
     				   "#          #"+
     				   "#          #"+
-    				   "#       !  #"+
     				   "#          #"+
-    				   "#          #"+
-    				   "#          #"+
-    				   "#    !     #"+
     				   "############");
     	player.setImage(playerSprite);
     	enemy.setImage(enemySprite);
+    	damageView.setImage(damage);
 
       /**
        * enemy and Enemies starting coordinates, set as desired.
        */
-    	player.setLayoutX(75);
-    	player.setLayoutY(75);
+    	player.setLayoutX(325);
+    	player.setLayoutY(325);
  	
     	enemy.setLayoutX(400);
     	enemy.setLayoutY(400);	
+
     	
     	layout.getChildren().add(player);
 
@@ -95,7 +103,7 @@ private int moveRes=10;
     	layout.getChildren().add(hostileG);
     	layout.getChildren().add(map1.walls);
     	layout.getChildren().add(map1.chests);
-    	
+    	layout.getChildren().add(damageView);
     	stage.show();
     	
     	
@@ -103,54 +111,143 @@ private int moveRes=10;
      /**
       * Takes User's key inputs. change KeyCode.RIGHT to KEyCode.D and etc to change from arrow keys to WASD.
       */
-   
+    			
+    		
+    	
     	scene.setOnKeyPressed(e ->{
-        	
+    		
     			if(e.getCode()==KeyCode.D) {
     				player.setImage(playerRight);
-    				if (check(moveRes,0)==true) {
+    				deltaX=moveRes;
+    				deltaY=0;
+    				/*if (check(moveRes,0)==true) {
     					
     					player.setLayoutX(player.getLayoutX()+moveRes);
-    				}
+    				}*/
     			}
     			
     			if(e.getCode()==KeyCode.A){
     				player.setImage(playerLeft);
-    				if(check(-moveRes,0)==true){
+    				deltaX=-moveRes;
+    				deltaY=0;
+    				/*if(check(-moveRes,0)==true){
     					
     					player.setLayoutX(player.getLayoutX()-moveRes);
-    				}
+    				}*/
     			}
+    	
     			
     		
 	    		if(e.getCode()==KeyCode.S) {
+	    			deltaY=moveRes;
+	    			deltaX=0;
 	    			player.setImage(playerDown);
+	    			/*
 	    			if (check(0,moveRes)==true) {
 	    			
 	    			player.setLayoutY(player.getLayoutY()+moveRes);
-	    			}
+	    			}*/
 	    			
 	    		}
 	        	
 	    		if(e.getCode()==KeyCode.W) {
+	    			deltaY=-moveRes;
+	    			deltaX=0;
 	    			player.setImage(playerUp);
-	    			if (check(0,-moveRes)==true) {
+	    			/*if (check(0,-moveRes)==true) {
 	    			
 	    			player.setLayoutY(player.getLayoutY()-moveRes);
-	    			}
+	    			}*/
 	    		}
-    		
+	    		
+	    		if(e.getCode()==KeyCode.SPACE) {
+	    			attack=true;
+	    		}
+    		});
     	
-    	});
-    }
-      
+    	 AnimationTimer animator = new AnimationTimer()
+    	    {
+    		
+    	        @Override
+    	        public void handle(long arg0) 
+    	        {
+    	        	damageView.setLayoutX(-1000);
+    	        	damageView.setLayoutY(-1000);
+    	            
+    	        for(int i=0;i<10;i++) {
+    	        	if (check(deltaX,deltaY)==true) {
+        	            
+        	        	
+    	        		int i1;
+    	        		int check=0;
+    	        	if(check==0) {
+    	        	i1=(int)(Math.random()-3);
+    	        	
+    	        	player.setLayoutY(player.getLayoutY()+deltaY);
+    	        	player.setLayoutX(player.getLayoutX()+deltaX);
+    	        	enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
+    	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
+    	        	check++;
+    	        	}
+    	        	check--;
+                  }
+    	        }
+    	        
+    	        deltaX=0;
+	    		deltaY=0;
+	    		
+	    		if (attack==true) {
+		    		if (player.getImage()==playerUp)
+		        		
+		        			damageView.setLayoutX(player.getLayoutX()-20);
+		        			damageView.setLayoutY(player.getLayoutY()-75);
+		        		
+		    		if (player.getImage()==playerDown) {
+		        		
+	        			damageView.setLayoutX(player.getLayoutX()-15);
+	        			damageView.setLayoutY(player.getLayoutY()+50);
+	        		}
+		    		
+	    	    	if (player.getImage()==playerLeft) {
+		        		
+	        			damageView.setLayoutX(player.getLayoutX()-75);
+	        			damageView.setLayoutY(player.getLayoutY()-15);
+	        		}
+	    			if (player.getImage()==playerRight) {
+	        		
+	    			damageView.setLayoutX(player.getLayoutX()+50);
+	    			damageView.setLayoutY(player.getLayoutY()-10);
+	    		
+	    			}
+	    		
+	    			
+	    			if(damageView.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+	 
+	    				
+	    				eHealth -= 2;
+	    				if(eHealth <=0) {
+	    			    	
+	        				layout.getChildren().remove(enemy);
+	        				enemy.setLayoutX(-10000);
+	        				enemy.setLayoutY(-10000);
+	    			}
+	    			
+	    			
+	    		}
+	    			attack=false;
+    	        }
+    	        }
+    	   
+    	        
+    	    };
+    	    animator.start();
+    	}
 
     public boolean check(double xDelt,double yDelt) {
     	Bounds pBound=player.getBoundsInParent();
     	
     	for( Node object: hostileG.getChildren()) {
-    		
-    	
+ 
     		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
     			
     			//Damage, change as desired.
@@ -190,7 +287,6 @@ private int moveRes=10;
         	
         	if(chest.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
         		map1.chests.getChildren().remove(chest);
-
         	
         		return false;
         		}	
@@ -204,4 +300,3 @@ private int moveRes=10;
 }
 }
     
-   
