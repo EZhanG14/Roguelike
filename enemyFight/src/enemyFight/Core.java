@@ -1,6 +1,3 @@
-package mondayDemo;
-
-
 import javafx.scene.layout.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -204,34 +201,25 @@ double deltaY=0;
     	        	damageView.setLayoutX(-1000);
     	        	damageView.setLayoutY(-1000);
     	            
-    	        for(int i=0;i<10;i++) {
-    	        	if (check(deltaX,deltaY)==true) {
-        	            
+    	        	for(int i=0;i<10;i++) {
+        	        	if (check(deltaX,deltaY)==true) {
+            	            int i1;
+        	            player.setLayoutY(player.getLayoutY()+deltaY);
+        	        	player.setLayoutX(player.getLayoutX()+deltaX);
+        	        	i1=(int)(Math.random()-3);
+        	        	if(check(enemy.getLayoutY()-i1*deltaX-player.getLayoutX()+deltaY,enemy.getLayoutY()-i1*deltaY-player.getLayoutY()+deltaY)==true) {
+            	        	
+        	        	enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
+        	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
         	        	
-
-    	            
-    	  
-    	            
-    	        	
-
-    	        		int i1;
-    	        		int check=0;
-    	        	if(check==0) {
-    	        	i1=(int)(Math.random()-3);
-    	        	
-    	        	player.setLayoutY(player.getLayoutY()+deltaY);
-    	        	player.setLayoutX(player.getLayoutX()+deltaX);
-    	        	enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
-    	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
-    	        	check++;
-    	        	}
-    	        	check--;
-
-                  }
-    	        }
+        	        	}
+        	        	
+        	        	}
+        	        }
+        	        deltaX=0;
+    	    		deltaY=0;
+        	    
     	        
-    	        deltaX=0;
-	    		deltaY=0;
 	    		
 	    		if (attack==true) {
 		    		if (player.getImage()==playerUp)
@@ -349,3 +337,4 @@ double deltaY=0;
 
 }
 
+}
