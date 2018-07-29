@@ -12,11 +12,6 @@ public class Map {
 	
 	
 	 public void createMap(String layout) {
-
-		
-
-         
-	
 		  		int posX = 0;
 		  		int posY=0;
 		  		
@@ -34,17 +29,9 @@ public class Map {
 		  			}
 		  			else if (i!=0)posX++;	
 		  			
-		  
-		  				
-		  	
-		  			System.out.println("yWalls "+posY*50); 
-					System.out.println("xWalls "+posX*50); 
-					System.out.println("xPos"+posX);
-					System.out.println("yPos"+posY);
 		  			if( layout.charAt(i)=='#'){
 		  			
-						System.out.println(i);
-						System.out.println();
+		
 						
 		  					map[posX][posY]= new ImageView();   
 		  		      		map[posX][posY].setImage(Core.brick);
@@ -53,30 +40,28 @@ public class Map {
 		  		      		map[posX][posY].setLayoutY(posY*50);//map[i][j].getLayoutBounds().getHeight());
 		  		      		walls.getChildren().add(map[posX][posY]);
 		  	  			}
-		  		
+		  			else if( layout.charAt(i)=='!'){
+		  				map[posX][posY]= new ImageView();   
+		  				map[posX][posY].setImage(Core.chest);
+		  				map[posX][posY].setFitHeight(50);
+		  				map[posX][posY].setFitWidth(50);
+		  				map[posX][posY].setLayoutX(posX*50);//map[i][j].getLayoutBounds().getWidth());
+		  				map[posX][posY].setLayoutY(posY*50);//map[i][j].getLayoutBounds().getHeight());
+		  				chests.getChildren().add(map[posX][posY]);
 		  			
 		  
 	
 		}
 		  			 
-		  		
-		  			
-		  		
-		  		
-	 
-	 }}
+	 }
+		  		}
+	 }
 
 
 		  		
 	 
 
 
-/*else if( layout.charAt(i)=='!'){
-		map[posX][posY]= new ImageView();   
-		map[posX][posY].setImage(Core.chest);
-		
-		map[posX][posY].setLayoutX(xWalls);//map[i][j].getLayoutBounds().getWidth());
-		map[posX][posY].setLayoutY(yWalls);//map[i][j].getLayoutBounds().getHeight());
-		chests.getChildren().add(map[posX][posY]);*/
+/**/
 
 
