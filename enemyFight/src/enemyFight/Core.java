@@ -163,7 +163,7 @@ double deltaY=0;
 	    		if(e.getCode()==KeyCode.SPACE) {
 	    			attack=true;
 	    		}
-    		});
+    		}});
     	
     	 AnimationTimer animator = new AnimationTimer()
     	    {
