@@ -1,4 +1,5 @@
-package enemyFight;
+package mondayDemo;
+
 
 import javafx.scene.layout.*;
 import javafx.animation.AnimationTimer;
@@ -47,6 +48,11 @@ Image playerLeft = new Image("file:linkLeft.png");
 Image playerDown = new Image("file:linkDown.png");
 Image playerUp = new Image("file:linkUp.png");
 Image damage=new Image ("file:damage.png");
+
+
+Image enemymoving=new Image("file:1.png");
+
+  
  static Image brick = new Image("file:wall3.png");
  
 Image sword = new Image("file:sword.jpg");
@@ -96,6 +102,12 @@ double deltaY=0;
     	enemy.setLayoutX(400);
     	enemy.setLayoutY(400);	
 
+
+
+
+    	enemy.setFitHeight(50);
+
+
     	
     	layout.getChildren().add(player);
 
@@ -120,6 +132,9 @@ double deltaY=0;
     				player.setImage(playerRight);
     				deltaX=moveRes;
     				deltaY=0;
+
+    				enemy.setImage(enemymoving);
+
     				/*if (check(moveRes,0)==true) {
     					
     					player.setLayoutX(player.getLayoutX()+moveRes);
@@ -127,7 +142,11 @@ double deltaY=0;
     			}
     			
     			if(e.getCode()==KeyCode.A){
+
     				player.setImage(playerLeft);
+
+    				enemy.setImage(enemymoving);
+
     				deltaX=-moveRes;
     				deltaY=0;
     				/*if(check(-moveRes,0)==true){
@@ -141,7 +160,11 @@ double deltaY=0;
 	    		if(e.getCode()==KeyCode.S) {
 	    			deltaY=moveRes;
 	    			deltaX=0;
+
 	    			player.setImage(playerDown);
+
+	    			enemy.setImage(enemymoving);
+
 	    			/*
 	    			if (check(0,moveRes)==true) {
 	    			
@@ -153,7 +176,10 @@ double deltaY=0;
 	    		if(e.getCode()==KeyCode.W) {
 	    			deltaY=-moveRes;
 	    			deltaX=0;
-	    			player.setImage(playerUp);
+
+
+	    			enemy.setImage(enemymoving);
+
 	    			/*if (check(0,-moveRes)==true) {
 	    			
 	    			player.setLayoutY(player.getLayoutY()-moveRes);
@@ -164,6 +190,18 @@ double deltaY=0;
 	    			attack=true;
 	    		}
     		}});
+
+
+	    		
+	    		if(e.getCode()==KeyCode.SPACE) {
+	    			attack=true;
+
+	    		
+	    			
+
+	    		}
+    		});
+
     	
     	 AnimationTimer animator = new AnimationTimer()
     	    {
@@ -171,22 +209,90 @@ double deltaY=0;
     	        @Override
     	        public void handle(long arg0) 
     	        {
+
     	        	damageView.setLayoutX(-1000);
     	        	damageView.setLayoutY(-1000);
     	            
     	        for(int i=0;i<10;i++) {
     	        	if (check(deltaX,deltaY)==true) {
+        	            
+        	        	
+
     	            
-    	        	//renders
+    	  
+    	            
+    	        	
+
+    	        		int i1;
+    	        		int check=0;
+    	        	if(check==0) {
+    	        	i1=(int)(Math.random()-3);
+    	        	
     	        	player.setLayoutY(player.getLayoutY()+deltaY);
     	        	player.setLayoutX(player.getLayoutX()+deltaX);
+    	        	enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
+    	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
+    	        	check++;
     	        	}
-    	        	
+    	        	check--;
+
+                  }
     	        }
     	        
     	        deltaX=0;
 	    		deltaY=0;
 	    		
+	    		if (attack==true) {
+		    		if (player.getImage()==playerUp)
+		        		
+		        			damageView.setLayoutX(player.getLayoutX()-20);
+		        			damageView.setLayoutY(player.getLayoutY()-75);
+		        		
+		    		if (player.getImage()==playerDown) {
+		        		
+	        			damageView.setLayoutX(player.getLayoutX()-15);
+	        			damageView.setLayoutY(player.getLayoutY()+50);
+	        		}
+		    		
+	    	    	if (player.getImage()==playerLeft) {
+		        		
+	        			damageView.setLayoutX(player.getLayoutX()-75);
+	        			damageView.setLayoutY(player.getLayoutY()-15);
+	        		}
+	    			if (player.getImage()==playerRight) {
+	        		
+	    			damageView.setLayoutX(player.getLayoutX()+50);
+	    			damageView.setLayoutY(player.getLayoutY()-10);
+	    		
+	    			}
+	    		
+	    			
+	    			if(damageView.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+	 
+	    				
+	    				eHealth -= 2;
+	    				if(eHealth <=0) {
+	    			    	
+	        				layout.getChildren().remove(enemy);
+	        				enemy.setLayoutX(-10000);
+	        				enemy.setLayoutY(-10000);
+	    			}
+	    			
+	    			
+	    		}
+	    			attack=false;
+    	        }
+    	        }
+    	   
+    	        
+
+    	        	}
+    	        }
+    	        
+    	        deltaX=0;
+	    		deltaY=0;
+	    		
+
 	    		if (attack==true) {
 		    		if (player.getImage()==playerUp)
 		        		
@@ -227,7 +333,10 @@ double deltaY=0;
 	    		}
 	    			attack=false;
     	        }
+
+
     	        }
+
     	    };
     	    animator.start();
     	}
@@ -287,6 +396,9 @@ double deltaY=0;
     	return true;
 		
 }
+
 }
     
-   
+
+}
+
