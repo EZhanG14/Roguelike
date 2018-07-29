@@ -71,7 +71,7 @@ private int moveRes=10;
     				   "#          #"+
     				   "#          #"+
     				   "#          #"+
-    				   "#          #"+
+    				   "#       !  #"+
     				   "#          #"+
     				   "#          #"+
     				   "#          #"+
@@ -94,6 +94,7 @@ private int moveRes=10;
     	hostileG.getChildren().add(enemy);
     	layout.getChildren().add(hostileG);
     	layout.getChildren().add(map1.walls);
+    	layout.getChildren().add(map1.chests);
     	
     	stage.show();
     	
@@ -148,14 +149,14 @@ private int moveRes=10;
     	Bounds pBound=player.getBoundsInParent();
     	
     	for( Node object: hostileG.getChildren()) {
-    		System.out.println(object.getBoundsInParent());
+    		
     	
     		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
     			
     			//Damage, change as desired.
     			eHealth -= 2;
     			pHealth -= 1;
-    			
+    		
     			System.out.println("eHealth "+ eHealth);
     			System.out.println("pHealth "+ pHealth);
     			
@@ -178,27 +179,24 @@ private int moveRes=10;
     		
         }
     	for( Node object: map1.walls.getChildren()) {
-    		System.out.println(object.getBoundsInParent());
+    	
     	
     		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
     			return false;
     		}
     		
     	for( Node chest: map1.chests.getChildren()) {
-        	System.out.println(object.getBoundsInParent());
         	
-        	if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
-        		  //layout.getChildren().remove(c);
-		          int chestchose = (int) Math.ceil(Math.random()*3 );
-		       	 // if(chestchose==1) s.setVisible(true);
-		         // if(chestchose==2) h.setVisible(true);
+        	
+        	if(chest.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
+        		map1.chests.getChildren().remove(chest);
+
         	
         		return false;
         		}	
    
     	}
-    	
-	
+    
 	
     }
     	return true;
