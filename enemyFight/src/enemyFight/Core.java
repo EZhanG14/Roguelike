@@ -1,4 +1,5 @@
-package enemyFight;
+package mondayDemo;
+
 
 import javafx.scene.layout.*;
 import javafx.animation.AnimationTimer;
@@ -47,6 +48,11 @@ Image playerLeft = new Image("file:linkLeft.png");
 Image playerDown = new Image("file:linkDown.png");
 Image playerUp = new Image("file:linkUp.png");
 Image damage=new Image ("file:damage.png");
+
+
+Image enemymoving=new Image("file:1.png");
+
+  
  static Image brick = new Image("file:wall3.png");
  
 Image sword = new Image("file:sword.jpg");
@@ -59,6 +65,7 @@ Group hostileG = new Group();
 Map map1=new Map();
 
 boolean attack=false;
+
 private int moveRes=2;
 double deltaX=0;
 double deltaY=0;
@@ -96,6 +103,9 @@ double deltaY=0;
     	enemy.setLayoutX(400);
     	enemy.setLayoutY(400);	
 
+
+    	enemy.setFitHeight(50);
+
     	
     	layout.getChildren().add(player);
 
@@ -120,6 +130,9 @@ double deltaY=0;
     				player.setImage(playerRight);
     				deltaX=moveRes;
     				deltaY=0;
+
+    				enemy.setImage(enemymoving);
+
     				/*if (check(moveRes,0)==true) {
     					
     					player.setLayoutX(player.getLayoutX()+moveRes);
@@ -127,7 +140,11 @@ double deltaY=0;
     			}
     			
     			if(e.getCode()==KeyCode.A){
+
     				player.setImage(playerLeft);
+
+    				enemy.setImage(enemymoving);
+
     				deltaX=-moveRes;
     				deltaY=0;
     				/*if(check(-moveRes,0)==true){
@@ -141,7 +158,11 @@ double deltaY=0;
 	    		if(e.getCode()==KeyCode.S) {
 	    			deltaY=moveRes;
 	    			deltaX=0;
+
 	    			player.setImage(playerDown);
+
+	    			enemy.setImage(enemymoving);
+
 	    			/*
 	    			if (check(0,moveRes)==true) {
 	    			
@@ -153,15 +174,23 @@ double deltaY=0;
 	    		if(e.getCode()==KeyCode.W) {
 	    			deltaY=-moveRes;
 	    			deltaX=0;
-	    			player.setImage(playerUp);
+
+
+	    			enemy.setImage(enemymoving);
+
 	    			/*if (check(0,-moveRes)==true) {
 	    			
 	    			player.setLayoutY(player.getLayoutY()-moveRes);
 	    			}*/
 	    		}
+
 	    		
 	    		if(e.getCode()==KeyCode.SPACE) {
 	    			attack=true;
+
+	    		
+	    			
+
 	    		}
     		});
     	
@@ -171,6 +200,7 @@ double deltaY=0;
     	        @Override
     	        public void handle(long arg0) 
     	        {
+
     	        	damageView.setLayoutX(-1000);
     	        	damageView.setLayoutY(-1000);
     	            
@@ -178,6 +208,12 @@ double deltaY=0;
     	        	if (check(deltaX,deltaY)==true) {
         	            
         	        	
+
+    	            
+    	  
+    	            
+    	        	
+
     	        		int i1;
     	        		int check=0;
     	        	if(check==0) {
@@ -190,6 +226,7 @@ double deltaY=0;
     	        	check++;
     	        	}
     	        	check--;
+
                   }
     	        }
     	        
@@ -239,6 +276,14 @@ double deltaY=0;
     	        }
     	   
     	        
+
+    	        	}
+    	        }
+    	        deltaX=0;
+	    		deltaY=0;
+	    		
+    	        }
+
     	    };
     	    animator.start();
     	}
@@ -298,5 +343,9 @@ double deltaY=0;
     	return true;
 		
 }
+
 }
     
+
+}
+
