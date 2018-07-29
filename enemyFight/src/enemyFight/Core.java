@@ -37,9 +37,16 @@ public class Core extends Application {
  */
 private int pHealth = 10;
 private int eHealth = 9;
+private int chestchose=0;
+
 ImageView damageView = new ImageView();
 ImageView player = new ImageView();
 ImageView enemy = new ImageView();
+ImageView inventory=new ImageView();
+ImageView sworda=new ImageView();
+ImageView healthbag=new ImageView();	
+	
+	
 Image playerSprite = new Image("file:linkDown.png");
 Image enemySprite = new Image("file:frown.png");
 Image playerRight = new Image("file:linkRight.png");
@@ -84,6 +91,9 @@ double deltaY=0;
     				   "############");
     	player.setImage(playerSprite);
     	enemy.setImage(enemySprite);
+        inventory.setImage(inventorybar);
+        sworda.setImage(sword);
+        healthbag.setImage(health);
 
       /**
        * enemy and Enemies starting coordinates, set as desired.
@@ -93,6 +103,27 @@ double deltaY=0;
  	
     	enemy.setLayoutX(400);
     	enemy.setLayoutY(400);	
+	    
+	inventory.setLayoutX(40);
+    	inventory.setLayoutY(400);
+    	inventory.setPreserveRatio(true);
+        inventory.setFitHeight(200);
+        inventory.setFitWidth(800);
+		
+        sworda.setLayoutX(95);
+	sworda.setLayoutY(500);
+	sworda.setPreserveRatio(true);
+	sworda.setFitHeight(70);
+	sworda.setFitWidth(150);
+	sworda.setVisible(false);
+		
+		
+	healthbag.setLayoutX(150);
+        healthbag.setLayoutY(500);
+    	healthbag.setPreserveRatio(true);
+        healthbag.setFitHeight(70);
+	healthbag.setFitWidth(150);
+	healthbag.setVisible(false);
     	
     	layout.getChildren().add(player);
 
@@ -100,7 +131,10 @@ double deltaY=0;
     	layout.getChildren().add(hostileG);
     	layout.getChildren().add(map1.walls);
     	layout.getChildren().add(map1.chests);
-    	
+    	layout.getChildren().add(inventory);
+    	layout.getChildren().add(sworda);
+    	layout.getChildren().add(healthbag);
+	    
     	stage.show();
     	
     	
@@ -159,6 +193,19 @@ double deltaY=0;
 	    		if(e.getCode()==KeyCode.SPACE) {
 	    			
 	    		}
+		        if(e.getCode()==KeyCode.F) {layout.getChildren().remove(sworda);
+    			   if(chestchose==1) {
+    				   inventory a=new inventory();
+    				      a.setpDamage(3);
+    			   }
+    		           }
+    		         if(e.getCode()==KeyCode.H){layout.getChildren().remove(healthbag);
+    			   if(chestchose==2) {
+    				   inventory a=new inventory();
+    				   a.setpHealth(10);
+    			   }
+		
+		
     		});
     	
     	 AnimationTimer animator = new AnimationTimer()
@@ -190,9 +237,9 @@ double deltaY=0;
     	for( Node object: hostileG.getChildren()) {
  
     		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
-    			
+    			inventory a=new inventory();
     			//Damage, change as desired.
-    			eHealth -= 2;
+    			eHealth -= a.getpDamage();;
     			pHealth -= 1;
     		
     			System.out.println("eHealth "+ eHealth);
@@ -228,7 +275,13 @@ double deltaY=0;
         	
         	if(chest.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
         		map1.chests.getChildren().remove(chest);
-        	
+        	        inventory a=new inventory();
+        		chestchose=a.getchestchose();
+        		if(chestchose==1) {
+        			sworda.setVisible(true);
+        		}else if(chestchose==2) {
+        			healthbag.setVisible(true);
+        		}
         		return false;
         		}	
    
