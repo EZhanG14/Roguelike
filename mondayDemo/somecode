@@ -1,0 +1,21 @@
+ 
+    	        	for(int i=0;i<10;i++) {
+        	        	if (check(deltaX,deltaY)==true) {
+            	            int i1;
+        	            player.setLayoutY(player.getLayoutY()+deltaY);
+        	        	player.setLayoutX(player.getLayoutX()+deltaX);
+        	        	i1=(int)(Math.random()-3);
+        	        	if(enemy.getLayoutY()-i1*deltaX>0&&enemy.getLayoutX()-i1*deltaX<600) {
+            	        	
+        	        	
+        	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
+        	        	
+        	        	}
+        	        	if(enemy.getLayoutY()-i1*deltaY>0&&enemy.getLayoutY()-i1*deltaY<600) {
+            	        	
+            	         enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
+        	        	}
+        	        	
+        	        }
+        	        deltaX=0;
+    	    		deltaY=0;
