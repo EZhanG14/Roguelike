@@ -19,41 +19,41 @@ public class Inventory{
 	ImageView sworda=new ImageView();
 	private Image sword = new Image("file:sword.jpg");
 	
-    ImageView healthbag=new ImageView(); 
-    private Image health=new Image("file:health.png");
+        ImageView healthbag=new ImageView(); 
+        private Image health=new Image("file:health.png");
     
-    ImageView inventory=new ImageView();
+        ImageView inventory=new ImageView();
 	private Image inventorybar=new Image("file:inventorybar.png");
 	/**Those method in which add Image to the Core
 	 * 
 	 */
 	Inventory(){
 		
-		inventory.setImage(inventorybar);
-		inventory.setLayoutX(40);
+	inventory.setImage(inventorybar);
+	inventory.setLayoutX(40);
     	inventory.setLayoutY(500);
     	inventory.setPreserveRatio(true);
         inventory.setFitHeight(300);
         inventory.setFitWidth(500);
         Core.layout.getChildren().add(inventory);
         
-        sworda.setLayoutX(95);
-	    sworda.setLayoutY(600);
-	    sworda.setPreserveRatio(true);
-	    sworda.setFitHeight(70);
-	    sworda.setFitWidth(150);
-	    sworda.setVisible(false);
-	    sworda.setImage(sword);
-	    Core.layout.getChildren().add(sworda);
+         sworda.setLayoutX(95);
+	 sworda.setLayoutY(600);
+	 sworda.setPreserveRatio(true);
+	 sworda.setFitHeight(70);
+	 sworda.setFitWidth(150);
+         sworda.setVisible(false);
+	 sworda.setImage(sword);
+	 Core.layout.getChildren().add(sworda);
 	    
-	    healthbag.setLayoutX(150);
-		healthbag.setLayoutY(600);
-		healthbag.setPreserveRatio(true);
-		healthbag.setFitWidth(150);
-		healthbag.setFitHeight(70);
-		healthbag.setVisible(false);
-		healthbag.setImage(health);
-		Core.layout.getChildren().add(healthbag);
+	  healthbag.setLayoutX(150);
+	  healthbag.setLayoutY(600);
+	  healthbag.setPreserveRatio(true);
+	  healthbag.setFitWidth(150);
+	  healthbag.setFitHeight(70);
+	  healthbag.setVisible(false);
+	  healthbag.setImage(health);
+	  Core.layout.getChildren().add(healthbag);
 	}
 	/** 
 	 * This is the method to change the health
