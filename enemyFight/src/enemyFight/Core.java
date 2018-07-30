@@ -12,7 +12,6 @@ import javafx.scene.input.KeyCode;
 /**Haven't found a way to check the boundaries of the window. ~Eric.Z
  * Features that are in here:
  * - Movement with WASD
-
  *
  * @author Eric Zhang
  * @author Gavin Guinn
@@ -81,9 +80,9 @@ public class Core extends Application {
     		
     		if(e.getCode()==KeyCode.H) {
     			if(inventory.healthbag.isVisible()==true) {
-    				inventory.phealth=10;
+    				inventory.setpHealth(10);
     				inventory.healthbag.setVisible(false);
-    				System.out.println("pHealth "+ inventory.phealth);
+    				System.out.println("pHealth "+ inventory.getpHealth());
     			}
     		}
     		
@@ -138,7 +137,7 @@ public class Core extends Application {
 	    				System.out.println("eHealth "+ eHealth);
 	        			System.out.println("pHealth "+ pHealth);
 	        			System.out.println();
-	    				eHealth -= inventory.pdamage;
+	    				eHealth -= inventory.getpDamage();
 	    				if(eHealth <=0) {
 	    			    	
 	        				layout.getChildren().remove(enemy1.enemy);
@@ -197,7 +196,7 @@ public class Core extends Application {
     	        
     	        if(chestchose==1) {
     	        	inventory.sworda.setVisible(true);
-    	        	inventory.pdamage=4;
+    	        	inventory.setpDamage(3);
     	        }
     	        if(chestchose==2) {
     	        	inventory.healthbag.setVisible(true);
@@ -209,6 +208,4 @@ public class Core extends Application {
     	
     return true;
     }
-}
-    
-   
+}   
