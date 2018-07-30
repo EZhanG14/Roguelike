@@ -1,0 +1,25 @@
+	if (check(deltaX,deltaY)==true) {
+        	            int i1;
+    	            player.setLayoutY(player.getLayoutY()+deltaY);
+    	        	player.setLayoutX(player.getLayoutX()+deltaX);
+    	        	i1=(int)(Math.random()-3);
+    	        	
+        	        	
+    	        	
+    	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
+    	        	
+    	        	
+        	        	
+        	         enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
+        	         if (enemy.setLayoutY()<50) {enemy.setLayoutY(50);
+    	        	}
+        	         if (enemy.setLayoutY()>550) {enemy.setLayoutY(550);
+     	        	}
+        	         if (enemy.setLayoutX()<50) {enemy.setLayoutX(50);
+     	        	}
+        	         if (enemy.setLayoutX()>550) {enemy.setLayoutX(550);
+     	        	}
+    	        	
+    	        }
+    	        deltaX=0;
+	    		deltaY=0;
