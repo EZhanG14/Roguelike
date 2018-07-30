@@ -62,7 +62,6 @@ Group hostileG = new Group();
 Map map1=new Map();
 
 boolean attack=false;
-
 private int moveRes=2;
 double deltaX=0;
 double deltaY=0;
@@ -101,7 +100,10 @@ double deltaY=0;
     	enemy.setLayoutY(400);	
 
 
+
+
     	enemy.setFitHeight(50);
+
 
     	
     	layout.getChildren().add(player);
@@ -180,6 +182,12 @@ double deltaY=0;
 	    			player.setLayoutY(player.getLayoutY()-moveRes);
 	    			}*/
 	    		}
+	    		
+	    		if(e.getCode()==KeyCode.SPACE) {
+	    			attack=true;
+	    		}
+    		}});
+
 
 	    		
 	    		if(e.getCode()==KeyCode.SPACE) {
@@ -190,6 +198,7 @@ double deltaY=0;
 
 	    		}
     		});
+
     	
     	 AnimationTimer animator = new AnimationTimer()
     	    {
@@ -267,9 +276,53 @@ double deltaY=0;
 
     	        	}
     	        }
+    	        
     	        deltaX=0;
 	    		deltaY=0;
 	    		
+
+	    		if (attack==true) {
+		    		if (player.getImage()==playerUp)
+		        		
+		        			damageView.setLayoutX(player.getLayoutX()-20);
+		        			damageView.setLayoutY(player.getLayoutY()-75);
+		        		
+		    		if (player.getImage()==playerDown) {
+		        		
+	        			damageView.setLayoutX(player.getLayoutX()-15);
+	        			damageView.setLayoutY(player.getLayoutY()+50);
+	        		}
+		    		
+	    	    	if (player.getImage()==playerLeft) {
+		        		
+	        			damageView.setLayoutX(player.getLayoutX()-75);
+	        			damageView.setLayoutY(player.getLayoutY()-15);
+	        		}
+	    			if (player.getImage()==playerRight) {
+	        		
+	    			damageView.setLayoutX(player.getLayoutX()+50);
+	    			damageView.setLayoutY(player.getLayoutY()-10);
+	    		
+	    			}
+	    		
+	    			
+	    			if(damageView.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+	    				System.out.println("intersects!!");
+	    				
+	    				eHealth -= 2;
+	    				if(eHealth <=0) {
+	    			    	
+	        				layout.getChildren().remove(enemy);
+	        				enemy.setLayoutX(-10000);
+	        				enemy.setLayoutY(-10000);
+	    			}
+	    			
+	    			
+	    		}
+	    			attack=false;
+    	        }
+
+
     	        }
 
     	    };
