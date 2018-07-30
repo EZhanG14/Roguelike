@@ -1,12 +1,14 @@
+package enemyFight;
+
 import javafx.scene.layout.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Bounds;
-import javafx.scene.Group;
+
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.image.*;
+
 import javafx.scene.input.KeyCode;
 
 /**Haven't found a way to check the boundaries of the window. ~Eric.Z
@@ -26,315 +28,185 @@ import javafx.scene.input.KeyCode;
  
 
 public class Core extends Application {
+	
     public static void main(String[] args) {
         launch(args);
     }
 
-/**
- * enemy and enemies health. Set as needed.
- */
-private int pHealth = 10;
-private int eHealth = 9;
-ImageView damageView = new ImageView();
-ImageView player = new ImageView();
-ImageView enemy = new ImageView();
-Image playerSprite = new Image("file:linkDown.png");
-Image enemySprite = new Image("file:frown.png");
-Image playerRight = new Image("file:linkRight.png");
-Image playerLeft = new Image("file:linkLeft.png");
-Image playerDown = new Image("file:linkDown.png");
-Image playerUp = new Image("file:linkUp.png");
-Image damage=new Image ("file:damage.png");
-
-
-Image enemymoving=new Image("file:1.png");
-
+   /* private ImageView damageView = new ImageView();
+    private ImageView player = new ImageView();*/
+    
   
- static Image brick = new Image("file:wall3.png");
- 
-Image sword = new Image("file:sword.jpg");
-Image health=new Image("file:health.png");
- Image inventorybar=new Image("file:inventorybar.png");
- static Image chest=new Image("file:chest.jpg");
-Pane layout = new Pane();
 
-Group hostileG = new Group();
-Map map1=new Map();
 
-boolean attack=false;
-
-private int moveRes=2;
-double deltaX=0;
-double deltaY=0;
-
+    static Pane layout = new Pane();
+    
+    private Map map1=new Map();
+    private Inventory inventory=new Inventory();
+   
+    
+	private int pHealth = 10;
+	private int eHealth = 9;
+	private int chestchose=0;
+	private boolean attack=false;
+	private int moveRes=1;
+	private double deltaX=0;
+	private double deltaY=0;
+	
+	static Player player1= new Player();
+	static Enemy enemy1= new Enemy();
+	  
     @Override
     public void start(Stage stage) throws InterruptedException {
-
+    	
     	stage.setTitle("Demo 2 player Fight");
-    	Scene scene = new Scene(layout, 800, 800);
+    	Scene scene = new Scene(layout, 600, 600);
     	stage.setScene(scene);
-    	
-    	
-    	map1.createMap("############"+
-    				   "#          #"+
-    				   "########## #"+
-    				   "#     #    #"+
-    				   "# # ! #    #"+
-    				   "# #####    #"+
-    				   "#          #"+
-    				   "#          #"+
-    				   "#          #"+
-    				   "#          #"+
-    				   "#          #"+
-    				   "############");
-    	player.setImage(playerSprite);
-    	enemy.setImage(enemySprite);
-    	damageView.setImage(damage);
-
-      /**
-       * enemy and Enemies starting coordinates, set as desired.
-       */
-    	player.setLayoutX(325);
-    	player.setLayoutY(325);
- 	
-    	enemy.setLayoutX(400);
-    	enemy.setLayoutY(400);	
-
-
-    	enemy.setFitHeight(50);
+    
+    	map1.createMap("void");
 
     	
-    	layout.getChildren().add(player);
 
-    	hostileG.getChildren().add(enemy);
-    	layout.getChildren().add(hostileG);
-    	layout.getChildren().add(map1.walls);
-    	layout.getChildren().add(map1.chests);
-    	layout.getChildren().add(damageView);
     	stage.show();
     	
-    	
-    	
-     /**
-      * Takes User's key inputs. change KeyCode.RIGHT to KEyCode.D and etc to change from arrow keys to WASD.
-      */
-    			
-    		
-    	
     	scene.setOnKeyPressed(e ->{
+			if(e.getCode()==KeyCode.D) {
+				player1.player.setImage(player1.playerRight);
+				deltaX=moveRes;
+				deltaY=0;
+			}
+			
+			if(e.getCode()==KeyCode.A){
+				player1.player.setImage(player1.playerLeft);
+				deltaX=-moveRes;
+				deltaY=0;
+			}
+
+    		if(e.getCode()==KeyCode.S) {
+    			deltaY=moveRes;
+    			deltaX=0;
+    			player1.player.setImage(player1.playerDown);
+    		}
+        	
+    		if(e.getCode()==KeyCode.W) {
+    			deltaY=-moveRes;
+    			deltaX=0;
+    			player1.player.setImage(player1.playerUp);
+    		}
     		
-    			if(e.getCode()==KeyCode.D) {
-    				player.setImage(playerRight);
-    				deltaX=moveRes;
-    				deltaY=0;
-
-    				enemy.setImage(enemymoving);
-
-    				/*if (check(moveRes,0)==true) {
-    					
-    					player.setLayoutX(player.getLayoutX()+moveRes);
-    				}*/
-    			}
-    			
-    			if(e.getCode()==KeyCode.A){
-
-    				player.setImage(playerLeft);
-
-    				enemy.setImage(enemymoving);
-
-    				deltaX=-moveRes;
-    				deltaY=0;
-    				/*if(check(-moveRes,0)==true){
-    					
-    					player.setLayoutX(player.getLayoutX()-moveRes);
-    				}*/
-    			}
+    		if(e.getCode()==KeyCode.SPACE) {
+    			attack=true;
+    		}
+    	});
     	
-    			
-    		
-	    		if(e.getCode()==KeyCode.S) {
-	    			deltaY=moveRes;
-	    			deltaX=0;
+    	AnimationTimer animator = new AnimationTimer() {
+			@Override
+			public void handle(long arg0){
+				int i1;
+				
+				player1.damageView.setLayoutX(-1000);
+				player1.damageView.setLayoutY(-1000);
 
-	    			player.setImage(playerDown);
-
-	    			enemy.setImage(enemymoving);
-
-	    			/*
-	    			if (check(0,moveRes)==true) {
-	    			
-	    			player.setLayoutY(player.getLayoutY()+moveRes);
-	    			}*/
-	    			
-	    		}
-	        	
-	    		if(e.getCode()==KeyCode.W) {
-	    			deltaY=-moveRes;
-	    			deltaX=0;
-
-
-	    			enemy.setImage(enemymoving);
-
-	    			/*if (check(0,-moveRes)==true) {
-	    			
-	    			player.setLayoutY(player.getLayoutY()-moveRes);
-	    			}*/
-	    		}
-
-	    		
-	    		if(e.getCode()==KeyCode.SPACE) {
-	    			attack=true;
-
-	    		
-	    			
-
-	    		}
-    		});
-    	
-    	 AnimationTimer animator = new AnimationTimer()
-    	    {
-    		
-    	        @Override
-    	        public void handle(long arg0) 
-    	        {
-
-    	        	damageView.setLayoutX(-1000);
-    	        	damageView.setLayoutY(-1000);
-    	            
-    	        	for(int i=0;i<10;i++) {
-        	        	if (check(deltaX,deltaY)==true) {
-            	            int i1;
-        	            player.setLayoutY(player.getLayoutY()+deltaY);
-        	        	player.setLayoutX(player.getLayoutX()+deltaX);
-        	        	i1=(int)(Math.random()-3);
-        	        	if(check(enemy.getLayoutY()-i1*deltaX-player.getLayoutX()+deltaY,enemy.getLayoutY()-i1*deltaY-player.getLayoutY()+deltaY)==true) {
-            	        	
-        	        	enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
-        	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
-        	        	
-        	        	}
-        	        	
-        	        	}
-        	        }
-        	        deltaX=0;
-    	    		deltaY=0;
-        	    
-    	        
-	    		
+				for(int i=0;i<10;i++) {
+			    	if (check(deltaX,deltaY)==true) {
+			            
+			    		player1.player.setLayoutY(player1.player.getLayoutY()+deltaY);
+			    		player1.player.setLayoutX(player1.player.getLayoutX()+deltaX);
+				    	
+				    	i1=(int)(Math.random()-3);
+				    	if(enemy1.enemy.getLayoutY()-i1*deltaX>0&&enemy1.enemy.getLayoutX()-i1*deltaX<600) enemy1.enemy.setLayoutX(enemy1.enemy.getLayoutX()-i1*deltaX);
+				    	if(enemy1.enemy.getLayoutY()-i1*deltaY>0&&enemy1.enemy.getLayoutY()-i1*deltaY<600)enemy1.enemy.setLayoutY(enemy1.enemy.getLayoutY()-i1*deltaY);	
+			    	}
+    	        }
+				
+		        deltaX=0;
+		        deltaY=0;
+	    	        	
 	    		if (attack==true) {
-		    		if (player.getImage()==playerUp)
+		    		if (player1.player.getImage()==player1.playerUp)	
+		    			player1.damageView.setLayoutX(player1.player.getLayoutX()-20);
+		    		player1.damageView.setLayoutY(player1.player.getLayoutY()-75);
 		        		
-		        			damageView.setLayoutX(player.getLayoutX()-20);
-		        			damageView.setLayoutY(player.getLayoutY()-75);
-		        		
-		    		if (player.getImage()==playerDown) {
-		        		
-	        			damageView.setLayoutX(player.getLayoutX()-15);
-	        			damageView.setLayoutY(player.getLayoutY()+50);
+		    		if (player1.player.getImage()==player1.playerDown) {
+		    			player1.damageView.setLayoutX(player1.player.getLayoutX()-15);
+		    			player1.damageView.setLayoutY(player1.player.getLayoutY()+50);
 	        		}
 		    		
-	    	    	if (player.getImage()==playerLeft) {
-		        		
-	        			damageView.setLayoutX(player.getLayoutX()-75);
-	        			damageView.setLayoutY(player.getLayoutY()-15);
+	    	    	if (player1.player.getImage()==player1.playerLeft) {
+	    	    		player1.damageView.setLayoutX(player1.player.getLayoutX()-75);
+	    	    		player1.damageView.setLayoutY(player1.player.getLayoutY()-15);
 	        		}
-	    			if (player.getImage()==playerRight) {
-	        		
-	    			damageView.setLayoutX(player.getLayoutX()+50);
-	    			damageView.setLayoutY(player.getLayoutY()-10);
+	    	    	
+	    			if (player1.player.getImage()==player1.playerRight) {
+	    				player1.damageView.setLayoutX(player1.player.getLayoutX()+50);
+	    				player1.damageView.setLayoutY(player1.player.getLayoutY()-10);
 	    		
 	    			}
 	    		
-	    			
-	    			if(damageView.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
-	 
-	    				
+	    			if(player1.damageView.getBoundsInParent().intersects(enemy1.enemy.getBoundsInParent())) {
+	
 	    				eHealth -= 2;
 	    				if(eHealth <=0) {
 	    			    	
-	        				layout.getChildren().remove(enemy);
-	        				enemy.setLayoutX(-10000);
-	        				enemy.setLayoutY(-10000);
-	    			}
+	        				layout.getChildren().remove(enemy1.enemy);
+	        				enemy1.enemy.setLayoutX(-10000);
+	        				enemy1.enemy.setLayoutY(-10000);
+	    				}
+		    		}
 	    			
-	    			
+	    		attack=false;
 	    		}
-	    			attack=false;
-    	        }
-    	        }
-    	   
-    	        
-
-    	        	}
-    	        }
-    	        deltaX=0;
-	    		deltaY=0;
-	    		
-    	        }
-
-    	    };
-    	    animator.start();
-    	}
+	    	}	
+	    };animator.start(); 
+    }
 
     public boolean check(double xDelt,double yDelt) {
-    	Bounds pBound=player.getBoundsInParent();
+    	Bounds pBound= player1.player.getBoundsInParent();
     	
-    	for( Node object: hostileG.getChildren()) {
- 
+    	for( Node object: enemy1.hostileG.getChildren()) {
+    		
     		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
     			
-    			//Damage, change as desired.
-    			eHealth -= 2;
+
+    			eHealth -= inventory.getpDamage();
     			pHealth -= 1;
-    		
+
     			System.out.println("eHealth "+ eHealth);
     			System.out.println("pHealth "+ pHealth);
     			
     			//"Deaths of the sprites"
     			if(pHealth <=0) {
-    				layout.getChildren().remove(player);
+    				layout.getChildren().remove(player1.player);
     				System.out.println("You died!");
     			}
     			
     			if(eHealth <=0) {
-    	
-    				layout.getChildren().remove(enemy);
-    				enemy.setLayoutX(-10000);
-    				enemy.setLayoutY(-10000);
-    				
+    				layout.getChildren().remove(enemy1.enemy);
+    				enemy1.enemy.setLayoutX(-10000);
+    				enemy1.enemy.setLayoutY(-10000);
     			}
-    			
-    			return false;
+    		return false;
     		}
-    		
         }
+    	
     	for( Node object: map1.walls.getChildren()) {
+    		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())) return false;
+    	}
     	
-    	
-    		if(object.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
-    			return false;
-    		}
-    		
     	for( Node chest: map1.chests.getChildren()) {
-        	
-        	
         	if(chest.getBoundsInParent().intersects(pBound.getMinX()+xDelt, pBound.getMinY()+yDelt, pBound.getWidth(), pBound.getHeight())){
         		map1.chests.getChildren().remove(chest);
-        	
-        		return false;
-        		}	
-   
-    	}
-    
-	
+    	        chestchose=inventory.getchestchose();
+    	        
+    	        if(chestchose==1)inventory.sworda.setVisible(true);
+    	        if(chestchose==2)inventory.healthbag.setVisible(true);
+    	        
+    	        return false;
+        	} 
+        }	
+    	
+    return true;
     }
-    	return true;
-		
-}
-
 }
     
-
-}
-
-}
+   
