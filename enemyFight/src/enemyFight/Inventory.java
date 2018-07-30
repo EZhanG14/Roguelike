@@ -1,13 +1,3 @@
-package enemyFight;
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-public class Inventory{ 
-	
-	private int phealth=10;
-	private int pdamage=1;
-	private int chestchose=0;
 	
 package enemyFight;
 
