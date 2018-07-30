@@ -1,25 +1,26 @@
-	if (check(deltaX,deltaY)==true) {
-        	            int i1;
-    	            player.setLayoutY(player.getLayoutY()+deltaY);
-    	        	player.setLayoutX(player.getLayoutX()+deltaX);
-    	        	i1=(int)(Math.random()-3);
+	for(int i=0;i<10;i++) {
+					if (check(deltaX,deltaY)==true) {
+        	            int i11;
+    	           player1.player.setLayoutY(player1.player.getLayoutY()+deltaY);
+    	        	player1.player.setLayoutX(player1.player.getLayoutX()+deltaX);
+    	        	i11=(int)(Math.random()-3);
     	        	
         	        	
     	        	
-    	        	enemy.setLayoutX(enemy.getLayoutX()-i1*deltaX);
+    	        	enemy1.enemy.setLayoutX(enemy1.enemy.getLayoutX()-i11*deltaX);
     	        	
     	        	
         	        	
-        	         enemy.setLayoutY(enemy.getLayoutY()-i1*deltaY);
-        	         if (enemy.setLayoutY()<50) {enemy.setLayoutY(50);
+        	         enemy1.enemy.setLayoutY(enemy1.enemy.getLayoutY()-i11*deltaY);
+        	         if (enemy1.enemy.getLayoutY()<200) {enemy1.enemy.setLayoutY(200);
     	        	}
-        	         if (enemy.setLayoutY()>550) {enemy.setLayoutY(550);
+        	         if (enemy1.enemy.getLayoutY()>500) {enemy1.enemy.setLayoutY(500);
      	        	}
-        	         if (enemy.setLayoutX()<50) {enemy.setLayoutX(50);
+        	         if (enemy1.enemy.getLayoutX()<200) {enemy1.enemy.setLayoutX(200);
      	        	}
-        	         if (enemy.setLayoutX()>550) {enemy.setLayoutX(550);
+        	         if (enemy1.enemy.getLayoutX()>500) {enemy1.enemy.setLayoutX(500);
      	        	}
     	        	
     	        }
     	        deltaX=0;
-	    		deltaY=0;
+	    		deltaY=0;};
